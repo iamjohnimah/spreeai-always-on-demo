@@ -1,0 +1,11 @@
+export type Item = {id:string;size:string;response:''|'interested'|'fitting'|'question';outcome:''|'keep'|'pass'|'purchased';prepared?:boolean;source:'online'|'vic'|'store'};
+export type Journey = {version:number;client:string;items:Item[];occasion:string;consent:boolean;requested:boolean};
+export const KEY:string;
+export const occasions:string[];
+export function configure(products:{id:string;sizes:string[]}[]):void;
+export function readJourney():Journey;
+export function changeJourney(edit:(j:Journey)=>void):Journey;
+export function togglePiece(id:string,source?:Item['source']):Journey;
+export function updatePiece(id:string,patch:Partial<Item>,source?:Item['source']):Journey;
+export function resetJourney():Journey;
+export function subscribe(fn:()=>void):()=>void;

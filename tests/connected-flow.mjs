@@ -1,0 +1,85 @@
+import {createRequire} from 'node:module';
+import assert from 'node:assert/strict';
+import {mkdirSync,writeFileSync} from 'node:fs';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.PLAYWRIGHT_PATH||'playwright');
+const base=process.env.DEMO_URL||'http://127.0.0.1:8767/spreeai-always-on-demo/';
+const browser=await chromium.launch({headless:true,channel:"chrome"});
+const context=await browser.newContext({viewport:{width:1440,height:1000}});
+await context.addInitScript(()=>{localStorage.setItem('ao-tutorials-enabled','false');localStorage.setItem('ao-associate-tutorials','false')});
+const page=await context.newPage();page.setDefaultTimeout(10000);const errors=[];const missing=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().startsWith(base))missing.push(r.url())});
+mkdirSync('qa-artifacts',{recursive:true});
+try{
+ await page.goto(base);await page.getByRole('button',{name:'+ Save to your edit',exact:true}).first().click();
+ await page.getByRole('button',{name:'Use Alex’s sample journey →',exact:true}).click();
+ await page.getByLabel('What are you dressing for?').selectOption('Wedding guest');
+ await page.locator('.journey-items select').first().selectOption('XXL');
+ await page.locator('.journey-items select').nth(1).selectOption('fitting');
+ await page.getByLabel('Include my sample edit').check();
+ await page.getByRole('button',{name:'Prepare appointment request',exact:true}).click();
+ assert.match(await page.locator('.connected-edit [role="status"]').innerText(),/Nothing was sent or booked/);
+ await page.screenshot({animations:'disabled',path:'qa-artifacts/online-desktop.png'});
+ await page.goto(base+'associate/in-store/?journey=alex');
+ await page.getByRole('button',{name:'Use Alex’s prepared sample profile',exact:true}).click();
+ await page.getByRole('button',{name:'Review the shared edit',exact:true}).click();
+ assert.equal(await page.locator('[data-size-id="leather-jacket"]').inputValue(),'XXL');
+ assert.match(await page.locator('.journey-response').innerText(),/Would like to try in store/);
+ await page.locator('[data-room-id="leather-jacket"]').check();
+ await page.locator('[data-outcome-id="leather-jacket"]').selectOption('keep');
+ await page.getByRole('button',{name:'Preview follow-up draft',exact:true}).click();
+ assert.match(await page.locator('dialog').innerText(),/pieces you wanted to keep in mind/);
+ await page.getByRole('button',{name:'Close dialog',exact:true}).click();
+ await page.screenshot({animations:'disabled',path:'qa-artifacts/store-desktop.png'});
+ await page.reload();await page.getByRole('button',{name:'Review the shared edit',exact:true}).click();
+ assert.equal(await page.locator('[data-room-id="leather-jacket"]').isChecked(),true);
+ assert.equal(await page.locator('[data-outcome-id="leather-jacket"]').inputValue(),'keep');
+ await page.goto(base+'associate/vic/?journey=alex');
+ await page.getByRole('button',{name:'Use Alex’s prepared sample profile',exact:true}).click();
+ await page.getByRole('button',{name:'Review the shared edit',exact:true}).click();
+ assert.equal(await page.locator('[data-size-id="leather-jacket"]').inputValue(),'XXL');
+ await page.goto(base+'associate/lookbook/?pieces=leather-jacket,knit-polo');
+ await page.getByRole('button',{name:'Ask my associate',exact:true}).first().click();
+ assert.equal(await page.getByRole('button',{name:'Ask my associate',exact:true}).first().getAttribute('aria-pressed'),'true');
+ await page.getByRole('button',{name:'Interested',exact:true}).nth(1).click();
+ const state=await page.evaluate(()=>JSON.parse(localStorage.getItem('ao-connected-journey-v1')));
+ assert.equal(state.items.length,2);assert.equal(state.items[0].response,'question');
+ await page.screenshot({animations:'disabled',path:'qa-artifacts/lookbook-desktop.png'});
+ for(const width of [390,1024]){
+  await page.setViewportSize({width,height:900});
+  for(const [route,label] of [['?journey=alex','online'],['associate/in-store/?journey=alex','store'],['associate/lookbook/?pieces=leather-jacket,knit-polo','lookbook']]){
+   await page.goto(base+route);await page.locator('h1,h2').first().waitFor();
+   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);assert.equal(overflow,false,`${label} overflow at ${width}`);
+   await page.screenshot({animations:'disabled',path:`qa-artifacts/${label}-${width}.png`});
+  }
+ }
+ await page.goto(base+'associate/lookbook/?pieces=unknown,%3Cscript%3E');
+ assert.equal(await page.locator('.lookbook-grid article').count(),0);
+ await page.goto(base+'?journey=alex');
+ await page.getByText('Watch Yuna explain the connected journey',{exact:true}).click();
+ await page.locator('.journey-film video').evaluate(v=>v.load());
+ await page.waitForFunction(()=>document.querySelector('.journey-film video')?.readyState>=1);
+ const duration=await page.locator('.journey-film video').evaluate(v=>v.duration);assert.ok(duration>=17&&duration<=19);
+
+ await page.goto(base+'product/leather-jacket/');
+ await page.getByRole('button',{name:'M Suggested',exact:true}).click();
+ await page.getByRole('button',{name:'Add to bag',exact:true}).click();
+ await page.getByRole('button',{name:'Shopping bag, 1 items',exact:true}).click();
+ assert.match(await page.locator('.bag-item').innerText(),/The leather biker/);
+ await page.getByRole('button',{name:'Continue to checkout →',exact:true}).click();
+ assert.equal(await page.locator('.checkout-modal').count(),1);
+ await page.getByRole('button',{name:'Close dialog',exact:true}).click();
+ await page.getByRole('button',{name:'Compare this piece',exact:true}).click();
+ assert.equal(await page.locator('.comparison img').count(),2);
+ await page.getByRole('button',{name:'Close dialog',exact:true}).click();
+ await page.getByRole('button',{name:'Saved looks',exact:true}).click();
+ assert.equal(await page.locator('[role="dialog"]').count(),1);
+ await page.getByRole('button',{name:'Close dialog',exact:true}).click();
+ const other=await context.newPage();await other.goto(base+'associate/in-store/?journey=alex');
+ await page.goto(base+'associate/lookbook/?pieces=leather-jacket');
+ await page.getByRole('button',{name:'Try in store',exact:true}).click();
+ await other.waitForFunction(()=>document.querySelector('.journey-context').textContent.includes('1 to try'));
+ await other.close();
+ assert.deepEqual(errors,[]);assert.deepEqual([...new Set(missing)],[]);
+ writeFileSync('qa-artifacts/flow-results.json',JSON.stringify({passed:true,viewports:[390,1024,1440],duration,errors,missing,state},null,2));console.log('PASS: online → store → VIC → client preferences, reload, responsive layouts, invalid links and video metadata.');
+}catch(e){await page.screenshot({animations:'disabled',path:'qa-artifacts/failure.png'});writeFileSync('qa-artifacts/failure.txt',JSON.stringify({body:await page.locator('body').innerText(),state:await page.evaluate(()=>Object.fromEntries(Object.entries(localStorage))),errors,missing},null,2));throw e}finally{await browser.close()}
