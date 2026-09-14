@@ -10,8 +10,9 @@ await context.addInitScript(()=>{localStorage.setItem('ao-tutorials-enabled','fa
 const page=await context.newPage();page.setDefaultTimeout(10000);const errors=[];const missing=[];
 page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().startsWith(base))missing.push(r.url())});
 mkdirSync('qa-artifacts',{recursive:true});
+async function openOnline(edit=false){await page.goto(base+'?journey=alex');assert.equal(await page.locator('.guide-modal').count(),1);await page.getByRole('button',{name:'Explore on my own',exact:true}).click();if(edit)await page.getByRole('button',{name:/^My edit/}).click()}
 try{
- await page.goto(base);await page.getByRole('button',{name:'+ Save to your edit',exact:true}).first().click();
+ await openOnline();await page.getByRole('button',{name:'+ Save to your edit',exact:true}).first().click();
  await page.getByRole('button',{name:'Use Alex’s sample journey →',exact:true}).click();
  await page.getByLabel('What are you dressing for?').selectOption('Wedding guest');
  await page.locator('.journey-items select').first().selectOption('XXL');
@@ -48,14 +49,14 @@ try{
  for(const width of [390,1024]){
   await page.setViewportSize({width,height:900});
   for(const [route,label] of [['?journey=alex','online'],['associate/in-store/?journey=alex','store'],['associate/lookbook/?pieces=leather-jacket,knit-polo','lookbook']]){
-   await page.goto(base+route);await page.locator('h1,h2').first().waitFor();
+   if(label==='online')await openOnline(true);else await page.goto(base+route);await page.locator('h1,h2').first().waitFor();
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);assert.equal(overflow,false,`${label} overflow at ${width}`);
    await page.screenshot({animations:'disabled',path:`qa-artifacts/${label}-${width}.png`});
   }
  }
  await page.goto(base+'associate/lookbook/?pieces=unknown,%3Cscript%3E');
  assert.equal(await page.locator('.lookbook-grid article').count(),0);
- await page.goto(base+'?journey=alex');
+ await openOnline(true);
  await page.getByText('Watch Yuna explain the connected journey',{exact:true}).click();
  await page.locator('.journey-film video').evaluate(v=>v.load());
  await page.waitForFunction(()=>document.querySelector('.journey-film video')?.readyState>=1);
