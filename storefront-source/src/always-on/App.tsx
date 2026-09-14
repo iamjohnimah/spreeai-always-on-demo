@@ -28,7 +28,7 @@ export default function App(){
  const [person,setPerson]=useState(()=>read('ao-person',1));
  const [profile,setProfile]=useState<Profile>(()=>read('ao-profile',sampleProfile));
  const tutorialsEnabled=useTutorialsEnabled();
- const [panel,setPanel]=useState<Panel>(()=>tutorialsEnabled?'guide':null);
+ const [panel,setPanel]=useState<Panel>(()=>location.pathname==='/'||tutorialsEnabled?'guide':null);
  const [step,setStep]=useState(0),[readyKey,setReadyKey]=useState('');
  const [initialMedia,setInitialMedia]=useState('');
  const [mediaOrder,setMediaOrder]=useState<'model'|'personal'>(()=>read('ao-media-order','model'));
@@ -45,7 +45,6 @@ export default function App(){
  const active=mode!=='out';
  const isJourneySample=mode==='personal'&&profile.name==='Alex'&&profile.photo==='sample';
  function startJourney(){switchMode('personal');if(pendingJourneyPiece&&!readJourney().items.some(x=>x.id===pendingJourneyPiece))togglePiece(pendingJourneyPiece);setPendingJourneyPiece('');setPanel('journey')}
- useEffect(()=>{if(new URLSearchParams(location.search).get('journey')==='alex')setPanel('journey')},[location.search]);
  const recommended=product?.category==='Accessories'?'One size':product?.category==='Shoes'?'42':product?.sizes.includes('32')?'32':mode==='personal'?'M':twins[person].size;
  const who=mode==='personal'?profile.name:twins[person].name;
  const generationKey=`${mode}:${person}`;
