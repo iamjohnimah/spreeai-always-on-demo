@@ -5,7 +5,7 @@ Public staging concept. The existing shopping demo and marketing site are preser
 ## Experiences
 - `in-store/`: associate profile setup, 45-piece catalogue, product/personal image toggle, filters, garment gallery, comparison, size override, fitting-room preparation and downloadable register handoff.
 - `vic/`: associate curation, personal visuals, message editing, channel preview and copyable sample lookbook link. No real message is sent.
-- `lookbook/`: read-only sample client view. No checkout.
+- `lookbook/`: sample client view with local interest, fitting and advice preferences. No checkout.
 
 ## Production integration
 A dedicated white-label workspace requires associate authentication (password/SSO), staff roles and client-level authorization. Alternatively, embed the workflow into the retailer CRM or associate application. Agree catalogue ingestion, availability sync, client-account identity mapping, consent, retention/deletion, supported sizing inputs, asynchronous generation and failure handling, secure media delivery and approved communication channels with the partner. Client links should be authorized, expiring and revocable. No production credentials or private customer data belong in this static app.
@@ -16,7 +16,7 @@ The prototype uses Alex, a prepared AI Twin, sample sizes and stock. Uploads are
 Two new 18-second Seedance 2.5 Yuna introductions (720p high bitrate), generated from the previously approved Yuna identity. Separate in-store and VIC dialogue; captions transcribed from actual output. Existing prepared product assets are reused from the shopping demo. 45 catalogue entries have four prepared views. Catalogue source URLs and prices are omitted.
 
 ## UX research
-Associate client books, preferences, notes and curated outreach informed the workspace. The fitting-room/register handoff and read-only client journey follow John's brief, rather than copying checkout flows.
+Associate client books, preferences, notes and curated outreach informed the workspace. The fitting-room/register handoff and sample client journey follow John's brief, rather than copying checkout flows.
 - https://docs.newstore.com/docs/managing-customers
 - https://docs.newstore.com/docs/using-newstore-associate-app-for-clienteling
 - https://docs.newstore.com/docs/engage-your-customers
@@ -27,3 +27,8 @@ Serve the repository at `/spreeai-always-on-demo/` to match GitHub Pages. No bui
 
 ## QA
 Browser checked: 390px mobile guide controls and profile completion; VIC curation and message preview; desktop profile activation, two-piece comparison and register handoff. Media transcripts checked against the requested dialogue and sample frames reviewed. No actual message or transaction submitted. Browser autoplay may require a tap for sound.
+
+## Connected journey (September 14)
+The online, VIC and in-store demos share a versioned Alex-only sample edit in browser storage. It holds catalogue IDs, valid preferred sizes, a predefined occasion, client preference labels, preparation flags and sample fitting outcomes. It never holds photos, measurements, contact details or message bodies. Links carry sample catalogue IDs only; a different browser receives no private profile or saved response. This is not authenticated or cross-device synchronization.
+
+A request marked prepared is local only. Store outcomes do not create orders. Follow-up previews include only pieces marked Keep for later. Clear the shared sample edit from the online demo controls or reset an associate workspace.

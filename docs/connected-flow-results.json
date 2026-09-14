@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "viewports": [
+    390,
+    1024,
+    1440
+  ],
+  "duration": 18.041667,
+  "errors": [],
+  "missing": [],
+  "state": {
+    "version": 1,
+    "client": "alex-demo",
+    "items": [
+      {
+        "id": "leather-jacket",
+        "size": "XXL",
+        "response": "question",
+        "outcome": "keep",
+        "prepared": true,
+        "source": "online"
+      },
+      {
+        "id": "knit-polo",
+        "size": "",
+        "response": "interested",
+        "outcome": "",
+        "prepared": false,
+        "source": "vic"
+      }
+    ],
+    "occasion": "Wedding guest",
+    "consent": true,
+    "requested": true
+  }
+}

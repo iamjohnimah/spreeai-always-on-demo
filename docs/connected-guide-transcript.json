@@ -1,0 +1,200 @@
+[
+  {
+    "start": 0.0,
+    "end": 1.18,
+    "text": " Start your edit online.",
+    "words": [
+      {
+        "start": 0.0,
+        "end": 0.54,
+        "word": " Start"
+      },
+      {
+        "start": 0.54,
+        "end": 0.7,
+        "word": " your"
+      },
+      {
+        "start": 0.7,
+        "end": 0.92,
+        "word": " edit"
+      },
+      {
+        "start": 0.92,
+        "end": 1.18,
+        "word": " online."
+      }
+    ]
+  },
+  {
+    "start": 2.36,
+    "end": 6.88,
+    "text": " Your associate can help you refine it, prepare a fitting, and follow up on your favorites.",
+    "words": [
+      {
+        "start": 2.36,
+        "end": 2.38,
+        "word": " Your"
+      },
+      {
+        "start": 2.38,
+        "end": 2.7,
+        "word": " associate"
+      },
+      {
+        "start": 2.7,
+        "end": 3.02,
+        "word": " can"
+      },
+      {
+        "start": 3.02,
+        "end": 3.22,
+        "word": " help"
+      },
+      {
+        "start": 3.22,
+        "end": 3.36,
+        "word": " you"
+      },
+      {
+        "start": 3.36,
+        "end": 3.56,
+        "word": " refine"
+      },
+      {
+        "start": 3.56,
+        "end": 3.9,
+        "word": " it,"
+      },
+      {
+        "start": 4.5,
+        "end": 4.8,
+        "word": " prepare"
+      },
+      {
+        "start": 4.8,
+        "end": 4.96,
+        "word": " a"
+      },
+      {
+        "start": 4.96,
+        "end": 5.18,
+        "word": " fitting,"
+      },
+      {
+        "start": 5.68,
+        "end": 5.92,
+        "word": " and"
+      },
+      {
+        "start": 5.92,
+        "end": 6.2,
+        "word": " follow"
+      },
+      {
+        "start": 6.2,
+        "end": 6.4,
+        "word": " up"
+      },
+      {
+        "start": 6.4,
+        "end": 6.52,
+        "word": " on"
+      },
+      {
+        "start": 6.52,
+        "end": 6.62,
+        "word": " your"
+      },
+      {
+        "start": 6.62,
+        "end": 6.88,
+        "word": " favorites."
+      }
+    ]
+  },
+  {
+    "start": 8.82,
+    "end": 11.02,
+    "text": " In this demo, try the journey as Alex.",
+    "words": [
+      {
+        "start": 8.82,
+        "end": 8.98,
+        "word": " In"
+      },
+      {
+        "start": 8.98,
+        "end": 9.08,
+        "word": " this"
+      },
+      {
+        "start": 9.08,
+        "end": 9.42,
+        "word": " demo,"
+      },
+      {
+        "start": 9.86,
+        "end": 10.08,
+        "word": " try"
+      },
+      {
+        "start": 10.08,
+        "end": 10.26,
+        "word": " the"
+      },
+      {
+        "start": 10.26,
+        "end": 10.46,
+        "word": " journey"
+      },
+      {
+        "start": 10.46,
+        "end": 10.76,
+        "word": " as"
+      },
+      {
+        "start": 10.76,
+        "end": 11.02,
+        "word": " Alex."
+      }
+    ]
+  },
+  {
+    "start": 11.98,
+    "end": 14.28,
+    "text": " Nothing is booked, reserved, or sent.",
+    "words": [
+      {
+        "start": 11.98,
+        "end": 12.14,
+        "word": " Nothing"
+      },
+      {
+        "start": 12.14,
+        "end": 12.38,
+        "word": " is"
+      },
+      {
+        "start": 12.38,
+        "end": 12.66,
+        "word": " booked,"
+      },
+      {
+        "start": 13.02,
+        "end": 13.18,
+        "word": " reserved,"
+      },
+      {
+        "start": 14.02,
+        "end": 14.04,
+        "word": " or"
+      },
+      {
+        "start": 14.04,
+        "end": 14.28,
+        "word": " sent."
+      }
+    ]
+  }
+]

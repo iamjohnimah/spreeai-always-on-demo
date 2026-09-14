@@ -10,7 +10,8 @@
       "S",
       "M",
       "L",
-      "XL"
+      "XL",
+      "XXL"
     ],
     "stock": true,
     "location": "Main floor",
@@ -35,7 +36,8 @@
       "S",
       "M",
       "L",
-      "XL"
+      "XL",
+      "XXL"
     ],
     "stock": true,
     "location": "Stockroom",
@@ -81,6 +83,8 @@
     "color": "Noir",
     "image": "/spreeai-always-on-demo/always-on-assets/style-2-1.webp",
     "sizes": [
+      "37",
+      "38",
       "39",
       "40",
       "41",

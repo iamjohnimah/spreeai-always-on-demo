@@ -1,0 +1,12 @@
+{
+  "model": "seedance_2_5",
+  "mode": "omni_reference",
+  "job_id": "60a2e8bb-9b36-4f83-b814-d45f51c7cc45",
+  "reference": "associate/assets/vic.jpg",
+  "requested_duration_seconds": 18,
+  "measured_duration_seconds": 18.042,
+  "resolution": "720p",
+  "bitrate_mode": "high",
+  "script": "Start your edit online. Your associate can help you refine it, prepare a fitting, and follow up on your favorites. In this demo, try the journey as Alex. Nothing is booked, reserved, or sent.",
+  "review": "Transcript matched script; six frames inspected for presenter consistency. Full listening not performed."
+}

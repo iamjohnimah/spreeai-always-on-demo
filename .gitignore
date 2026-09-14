@@ -1,0 +1,4 @@
+storefront-source/node_modules
+storefront-source/dist/
+storefront-source/*.tsbuildinfo
+qa-artifacts/
