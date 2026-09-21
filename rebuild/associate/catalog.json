@@ -1,0 +1,1362 @@
+[
+  {
+    "id": "leather-jacket",
+    "name": "The leather biker",
+    "category": "Outerwear",
+    "color": "Noir",
+    "image": "/spreeai-always-on-demo/always-on-assets/leather-jacket.webp",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "A1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/person-1-0.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-leather-jacket-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-leather-jacket-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/person-1-1.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-leather-jacket-alex.mp4"
+  },
+  {
+    "id": "knit-polo",
+    "name": "The merino polo",
+    "category": "Knitwear",
+    "color": "Bordeaux",
+    "image": "/spreeai-always-on-demo/always-on-assets/knit-polo.webp",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "B2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/person-1-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-knit-polo-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-knit-polo-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/person-1-3.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-knit-polo-alex.mp4"
+  },
+  {
+    "id": "trousers",
+    "name": "The tailored trouser",
+    "category": "Bottoms",
+    "color": "Ivory",
+    "image": "/spreeai-always-on-demo/always-on-assets/style-2-0.webp",
+    "sizes": [
+      "28",
+      "30",
+      "32",
+      "34",
+      "36"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "C3",
+    "size": "32",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/style-1-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-trousers-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-trousers-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/look-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-trousers-alex.mp4"
+  },
+  {
+    "id": "loafers",
+    "name": "The leather loafer",
+    "category": "Shoes",
+    "color": "Noir",
+    "image": "/spreeai-always-on-demo/always-on-assets/style-2-1.webp",
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "D4",
+    "size": "42",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/style-1-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-loafers-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-loafers-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/look-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-loafers-alex.mp4"
+  },
+  {
+    "id": "cuff",
+    "name": "The sculptural cuff",
+    "category": "Accessories",
+    "color": "Silver",
+    "image": "/spreeai-always-on-demo/always-on-assets/style-2-2.webp",
+    "sizes": [
+      "One size"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "E1",
+    "size": "One size",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/style-1-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-cuff-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-cuff-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/look-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-cuff-alex.mp4"
+  },
+  {
+    "id": "spree-roanne-panelled-knit-maxi-dress-demosite",
+    "name": "Knit Maxi Dress",
+    "category": "Dresses",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-roanne-panelled-knit-maxi-dress-demosite-0-original.png",
+    "model": "/catalog/spree-roanne-panelled-knit-maxi-dress-demosite-1-original.png",
+    "description": "Knit Maxi Dress, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "A2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-roanne-panelled-knit-maxi-dress-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-roanne-panelled-knit-maxi-dress-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-roanne-panelled-knit-maxi-dress-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-roanne-panelled-knit-maxi-dress-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-roanne-panelled-knit-maxi-dress-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-seraphis-skirt-black-demosite",
+    "name": "Seraphis Skirt - Black",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-seraphis-skirt-black-demosite-0-original.png",
+    "model": "/catalog/spree-seraphis-skirt-black-demosite-1-original.jpg",
+    "description": "Seraphis Skirt - Black, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": false,
+    "location": "Main floor",
+    "rail": "B3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-seraphis-skirt-black-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-seraphis-skirt-black-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-seraphis-skirt-black-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-seraphis-skirt-black-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-seraphis-skirt-black-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-womens-jeans-demo-site",
+    "name": "Dark Jeans",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-womens-jeans-demo-site-0-original.png",
+    "model": "/catalog/spree-womens-jeans-demo-site-1-original.png",
+    "description": "Dark Jeans, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "C4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-womens-jeans-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-womens-jeans-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-womens-jeans-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-womens-jeans-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-womens-jeans-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-pink-cheetah-sweater-demo-site",
+    "name": "Pink Cheetah Sweater",
+    "category": "Knitwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-pink-cheetah-sweater-demo-site-0-original.png",
+    "model": "/catalog/spree-pink-cheetah-sweater-demo-site-1-original.png",
+    "description": "Pink Cheetah Sweater, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "D1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-pink-cheetah-sweater-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-pink-cheetah-sweater-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-pink-cheetah-sweater-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-pink-cheetah-sweater-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-pink-cheetah-sweater-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-gianvitorossi-sofia-sling-70",
+    "name": "Sofia Sling 70",
+    "category": "Shoes",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-gianvitorossi-sofia-sling-70-0-original.jpg",
+    "model": "/catalog/spree-gianvitorossi-sofia-sling-70-1-original.jpg",
+    "description": "Sofia Sling 70, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "E2",
+    "size": "42",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-gianvitorossi-sofia-sling-70-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-gianvitorossi-sofia-sling-70-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-gianvitorossi-sofia-sling-70-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-gianvitorossi-sofia-sling-70-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-gianvitorossi-sofia-sling-70-alex.mp4"
+  },
+  {
+    "id": "spree-plaid-shirt",
+    "name": "Plaid shirt",
+    "category": "Shirts",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-plaid-shirt-0-original.png",
+    "model": "/catalog/spree-plaid-shirt-1-original.png",
+    "description": "Plaid shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "A3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-plaid-shirt-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-plaid-shirt-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-plaid-shirt-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-plaid-shirt-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-plaid-shirt-alex.mp4"
+  },
+  {
+    "id": "spree-heaven-mayhem-clarke-cuff-silver",
+    "name": "Clarke Cuff",
+    "category": "Accessories",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-heaven-mayhem-clarke-cuff-silver-0-original.jpg",
+    "model": "/catalog/spree-heaven-mayhem-clarke-cuff-silver-1-original.jpg",
+    "description": "Clarke Cuff, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "One size"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "B4",
+    "size": "One size",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-heaven-mayhem-clarke-cuff-silver-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-heaven-mayhem-clarke-cuff-silver-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-heaven-mayhem-clarke-cuff-silver-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-heaven-mayhem-clarke-cuff-silver-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-heaven-mayhem-clarke-cuff-silver-alex.mp4"
+  },
+  {
+    "id": "spree-oversized-sweatshirt-demo-site",
+    "name": "Oversized Sweatshirt",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-oversized-sweatshirt-demo-site-0-original.png",
+    "model": "/catalog/spree-oversized-sweatshirt-demo-site-1-original.png",
+    "description": "Oversized Sweatshirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "C1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-oversized-sweatshirt-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-oversized-sweatshirt-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-oversized-sweatshirt-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-oversized-sweatshirt-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-oversized-sweatshirt-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-zara-linen-fringe-jacket",
+    "name": "Linen Blend Fringe Jacket",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-zara-linen-fringe-jacket-0-original.jpg",
+    "model": "/catalog/spree-zara-linen-fringe-jacket-1-original.jpg",
+    "description": "Linen Blend Fringe Jacket, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": false,
+    "location": "Stockroom",
+    "rail": "D2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-zara-linen-fringe-jacket-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-zara-linen-fringe-jacket-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-zara-linen-fringe-jacket-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-zara-linen-fringe-jacket-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-zara-linen-fringe-jacket-alex.mp4"
+  },
+  {
+    "id": "spree-romma-top-black-demosite",
+    "name": "Romma Knit Top - Black",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-romma-top-black-demosite-0-original.png",
+    "model": "/catalog/spree-romma-top-black-demosite-1-original.jpg",
+    "description": "Romma Knit Top - Black, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "E3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-romma-top-black-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-romma-top-black-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-romma-top-black-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-romma-top-black-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-romma-top-black-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-tank-top-demo-site",
+    "name": "Tank Top",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-tank-top-demo-site-0-original.png",
+    "model": "/catalog/spree-tank-top-demo-site-1-original.png",
+    "description": "Tank Top, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "A4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-tank-top-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-tank-top-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-tank-top-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-tank-top-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-tank-top-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-wide-leg-jeans-demo-site",
+    "name": "Wide Leg Jeans",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-wide-leg-jeans-demo-site-0-original.png",
+    "model": "/catalog/spree-wide-leg-jeans-demo-site-1-original.png",
+    "description": "Wide Leg Jeans, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "B1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-wide-leg-jeans-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-wide-leg-jeans-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-wide-leg-jeans-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-wide-leg-jeans-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-wide-leg-jeans-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-matteau-breton-tee-002",
+    "name": "Breton Striped Cotton-Jersey T-Shirt",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-matteau-breton-tee-002-0-original.png",
+    "model": "/catalog/spree-matteau-breton-tee-002-1-original.jpg",
+    "description": "Breton Striped Cotton-Jersey T-Shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "C2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-matteau-breton-tee-002-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-matteau-breton-tee-002-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-matteau-breton-tee-002-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-matteau-breton-tee-002-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-matteau-breton-tee-002-alex.mp4"
+  },
+  {
+    "id": "spree-liberowe-fringed-tweed-jacket",
+    "name": "Fringed Tweed Jacket",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-liberowe-fringed-tweed-jacket-0-original.jpg",
+    "model": "/catalog/spree-liberowe-fringed-tweed-jacket-1-original.jpg",
+    "description": "Fringed Tweed Jacket, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "D3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-liberowe-fringed-tweed-jacket-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-liberowe-fringed-tweed-jacket-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-liberowe-fringed-tweed-jacket-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-liberowe-fringed-tweed-jacket-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-liberowe-fringed-tweed-jacket-alex.mp4"
+  },
+  {
+    "id": "spree-slim-fit-vest-with-peplum-hem-demosite",
+    "name": "Slim-Fit Vest",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-slim-fit-vest-with-peplum-hem-demosite-0-original.png",
+    "model": "/catalog/spree-slim-fit-vest-with-peplum-hem-demosite-1-original.png",
+    "description": "Slim-Fit Vest, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "E4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-slim-fit-vest-with-peplum-hem-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-slim-fit-vest-with-peplum-hem-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-slim-fit-vest-with-peplum-hem-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-slim-fit-vest-with-peplum-hem-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-slim-fit-vest-with-peplum-hem-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-textured-knit-resort-shirt",
+    "name": "Textured Knit Resort Shirt",
+    "category": "Shirts",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-textured-knit-resort-shirt-0-original.png",
+    "model": "/catalog/spree-textured-knit-resort-shirt-1-original.png",
+    "description": "Textured Knit Resort Shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": false,
+    "location": "Main floor",
+    "rail": "A1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-textured-knit-resort-shirt-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-textured-knit-resort-shirt-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-textured-knit-resort-shirt-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-textured-knit-resort-shirt-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-textured-knit-resort-shirt-alex.mp4"
+  },
+  {
+    "id": "spree-cardigan-in-a-flowy-fabric-demosite",
+    "name": "Cardigan in Flowy Fabric",
+    "category": "Knitwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-cardigan-in-a-flowy-fabric-demosite-0-original.png",
+    "model": "/catalog/spree-cardigan-in-a-flowy-fabric-demosite-1-original.png",
+    "description": "Cardigan in Flowy Fabric, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "B2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-cardigan-in-a-flowy-fabric-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-cardigan-in-a-flowy-fabric-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-cardigan-in-a-flowy-fabric-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-cardigan-in-a-flowy-fabric-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-cardigan-in-a-flowy-fabric-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-denim-jacket-demo-site",
+    "name": "Red cropped jacket",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-denim-jacket-demo-site-0-original.png",
+    "model": "/catalog/spree-denim-jacket-demo-site-1-original.png",
+    "description": "A vivid red cropped jacket, selected from the SPREEAI demo collection. Explore the silhouette and build your edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "sourceTitle": "Denim Jacket",
+    "stock": true,
+    "location": "Main floor",
+    "rail": "C3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-denim-jacket-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-denim-jacket-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-denim-jacket-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-denim-jacket-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-denim-jacket-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-burberry-check-silk-scarf-sand",
+    "name": "Check Silk Scarf - Sand",
+    "category": "Accessories",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-burberry-check-silk-scarf-sand-0-original.jpg",
+    "model": "/catalog/spree-burberry-check-silk-scarf-sand-1-original.jpg",
+    "description": "Check Silk Scarf - Sand, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "One size"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "D4",
+    "size": "One size",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-burberry-check-silk-scarf-sand-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-burberry-check-silk-scarf-sand-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-burberry-check-silk-scarf-sand-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-burberry-check-silk-scarf-sand-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-burberry-check-silk-scarf-sand-alex.mp4"
+  },
+  {
+    "id": "spree-cropped-jacket-demo-site",
+    "name": "Cropped Jacket",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-cropped-jacket-demo-site-0-original.png",
+    "model": "/catalog/spree-cropped-jacket-demo-site-1-original.png",
+    "description": "Cropped Jacket, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "E1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-cropped-jacket-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-cropped-jacket-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-cropped-jacket-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-cropped-jacket-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-cropped-jacket-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-elene-top-bleu-taormina-paisley",
+    "name": "Elene Top",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-elene-top-bleu-taormina-paisley-0-original.png",
+    "model": "/catalog/spree-elene-top-bleu-taormina-paisley-1-original.png",
+    "description": "Elene Top, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "A2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-elene-top-bleu-taormina-paisley-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-elene-top-bleu-taormina-paisley-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-elene-top-bleu-taormina-paisley-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-elene-top-bleu-taormina-paisley-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-elene-top-bleu-taormina-paisley-alex.mp4"
+  },
+  {
+    "id": "spree-cecilia-pump",
+    "name": "Cecilia Pump",
+    "category": "Shoes",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-cecilia-pump-0-original.png",
+    "model": "/catalog/spree-cecilia-pump-1-original.jpg",
+    "description": "Cecilia Pump, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "B3",
+    "size": "42",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-cecilia-pump-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-cecilia-pump-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-cecilia-pump-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-cecilia-pump-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-cecilia-pump-alex.mp4"
+  },
+  {
+    "id": "spree-leather-pants-demo-site",
+    "name": "Leather Pants",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-leather-pants-demo-site-0-original.png",
+    "model": "/catalog/spree-leather-pants-demo-site-1-original.png",
+    "description": "Leather Pants, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": false,
+    "location": "Stockroom",
+    "rail": "C4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-leather-pants-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-leather-pants-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-leather-pants-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-leather-pants-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-leather-pants-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-regular-fit-linen-blend-polo-shirt-demo-site",
+    "name": "Black & White Polo Shirt",
+    "category": "Shirts",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-regular-fit-linen-blend-polo-shirt-demo-site-0-original.png",
+    "model": "/catalog/spree-regular-fit-linen-blend-polo-shirt-demo-site-1-original.png",
+    "description": "Black & White Polo Shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "D1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-linen-blend-polo-shirt-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-linen-blend-polo-shirt-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-linen-blend-polo-shirt-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-linen-blend-polo-shirt-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-linen-blend-polo-shirt-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-hudson-st-pant-demosite",
+    "name": "Wide-Leg Pants",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-hudson-st-pant-demosite-0-original.png",
+    "model": "/catalog/spree-hudson-st-pant-demosite-1-original.png",
+    "description": "Wide-Leg Pants, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "E2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-hudson-st-pant-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-hudson-st-pant-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-hudson-st-pant-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-hudson-st-pant-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-hudson-st-pant-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite",
+    "name": "Regular-Fit Blazer",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-0-original.png",
+    "model": "/catalog/spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-1-original.png",
+    "description": "Regular-Fit Blazer, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "A3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-blazer-in-italian-made-virgin-wool-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-black-shorts-demo-site",
+    "name": "Pleated Shorts",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-black-shorts-demo-site-0-original.png",
+    "model": "/catalog/spree-black-shorts-demo-site-1-original.png",
+    "description": "Pleated Shorts, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "B4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-black-shorts-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-black-shorts-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-black-shorts-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-black-shorts-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-black-shorts-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-regular-fit-shirt-demo-site",
+    "name": "Striped Shirt",
+    "category": "Shirts",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-regular-fit-shirt-demo-site-0-original.png",
+    "model": "/catalog/spree-regular-fit-shirt-demo-site-1-original.png",
+    "description": "Striped Shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "C1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-shirt-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-shirt-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-shirt-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-shirt-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-shirt-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-khaite-leaf-earrings-gold",
+    "name": "Leaf Earrings",
+    "category": "Accessories",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-khaite-leaf-earrings-gold-0-original.jpg",
+    "model": "/catalog/spree-khaite-leaf-earrings-gold-1-original.jpg",
+    "description": "Leaf Earrings, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "One size"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "D2",
+    "size": "One size",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-khaite-leaf-earrings-gold-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-khaite-leaf-earrings-gold-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-khaite-leaf-earrings-gold-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-khaite-leaf-earrings-gold-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-khaite-leaf-earrings-gold-alex.mp4"
+  },
+  {
+    "id": "spree-eel-effect-leather-sneakers",
+    "name": "Eel-effect leather sneakers",
+    "category": "Shoes",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-eel-effect-leather-sneakers-0-original.png",
+    "model": "/catalog/spree-eel-effect-leather-sneakers-1-original.png",
+    "description": "Eel-effect leather sneakers, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "stock": false,
+    "location": "Main floor",
+    "rail": "E3",
+    "size": "42",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-eel-effect-leather-sneakers-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-eel-effect-leather-sneakers-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-eel-effect-leather-sneakers-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-eel-effect-leather-sneakers-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-eel-effect-leather-sneakers-alex.mp4"
+  },
+  {
+    "id": "spree-relaxed-fit-linen-blend-tailored-trousers-demo-site",
+    "name": "Linen Trousers",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-0-original.png",
+    "model": "/catalog/spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-1-original.png",
+    "description": "Linen Trousers, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "A4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-linen-blend-tailored-trousers-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-relaxed-fit-t-shirt-demo-site",
+    "name": "Relaxed-Fit T-Shirt",
+    "category": "Tops",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-relaxed-fit-t-shirt-demo-site-0-original.png",
+    "model": "/catalog/spree-relaxed-fit-t-shirt-demo-site-1-original.png",
+    "description": "Relaxed-Fit T-Shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "B1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-relaxed-fit-t-shirt-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-t-shirt-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-t-shirt-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-relaxed-fit-t-shirt-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-t-shirt-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-izel-sweater-black-demosite",
+    "name": "Sweater - Black",
+    "category": "Knitwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-izel-sweater-black-demosite-0-original.png",
+    "model": "/catalog/spree-izel-sweater-black-demosite-1-original.jpg",
+    "description": "Sweater - Black, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "C2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-izel-sweater-black-demosite-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-izel-sweater-black-demosite-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-izel-sweater-black-demosite-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-izel-sweater-black-demosite-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-izel-sweater-black-demosite-alex.mp4"
+  },
+  {
+    "id": "spree-printed-shorts",
+    "name": "Blue Embroidered Shirt",
+    "category": "Shirts",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-printed-shorts-0-original.png",
+    "model": "/catalog/spree-printed-shorts-1-original.png",
+    "description": "Blue Embroidered Shirt, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "D3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-printed-shorts-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-printed-shorts-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-printed-shorts-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-printed-shorts-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-printed-shorts-alex.mp4"
+  },
+  {
+    "id": "spree-ralphlauren-polo-play-thong-sandal-limeade",
+    "name": "Polo Play Leather Thong Sandal",
+    "category": "Shoes",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-ralphlauren-polo-play-thong-sandal-limeade-0-original.jpg",
+    "model": "/catalog/spree-ralphlauren-polo-play-thong-sandal-limeade-1-original.jpg",
+    "description": "Polo Play Leather Thong Sandal, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "E4",
+    "size": "42",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-ralphlauren-polo-play-thong-sandal-limeade-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-ralphlauren-polo-play-thong-sandal-limeade-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-ralphlauren-polo-play-thong-sandal-limeade-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-ralphlauren-polo-play-thong-sandal-limeade-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-ralphlauren-polo-play-thong-sandal-limeade-alex.mp4"
+  },
+  {
+    "id": "spree-gauze-shirt-boxy-fit",
+    "name": "Gauze Shirt in Boxy Fit",
+    "category": "Shirts",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-gauze-shirt-boxy-fit-0-original.png",
+    "model": "/catalog/spree-gauze-shirt-boxy-fit-1-original.png",
+    "description": "Gauze Shirt in Boxy Fit, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "A1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-gauze-shirt-boxy-fit-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-gauze-shirt-boxy-fit-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-gauze-shirt-boxy-fit-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-gauze-shirt-boxy-fit-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-gauze-shirt-boxy-fit-alex.mp4"
+  },
+  {
+    "id": "spree-regular-fit-shorts-demo-site",
+    "name": "Striped Shorts",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-regular-fit-shorts-demo-site-0-original.png",
+    "model": "/catalog/spree-regular-fit-shorts-demo-site-1-original.png",
+    "description": "Striped Shorts, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": false,
+    "location": "Stockroom",
+    "rail": "B2",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-shorts-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-shorts-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-shorts-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-regular-fit-shorts-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-regular-fit-shorts-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-slim-fit-jacket-in-washable-virgin-wool-demo-site",
+    "name": "Slim-Fit Jacket",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-0-original.png",
+    "model": "/catalog/spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-1-original.png",
+    "description": "Slim-Fit Jacket, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "C3",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-slim-fit-jacket-in-washable-virgin-wool-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-relaxed-fit-cotton-cargo-pants-demo-site",
+    "name": "Cargo Pants",
+    "category": "Bottoms",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-relaxed-fit-cotton-cargo-pants-demo-site-0-original.png",
+    "model": "/catalog/spree-relaxed-fit-cotton-cargo-pants-demo-site-1-original.png",
+    "description": "Cargo Pants, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Stockroom",
+    "rail": "D4",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-relaxed-fit-cotton-cargo-pants-demo-site-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-cotton-cargo-pants-demo-site-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-cotton-cargo-pants-demo-site-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-relaxed-fit-cotton-cargo-pants-demo-site-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-relaxed-fit-cotton-cargo-pants-demo-site-alex.mp4"
+  },
+  {
+    "id": "spree-canvas-relaxed-shirt-jacket",
+    "name": "Canvas Relaxed Shirt Jacket",
+    "category": "Outerwear",
+    "color": "As shown",
+    "row": -1,
+    "image": "/spreeai-always-on-demo/catalog/spree-canvas-relaxed-shirt-jacket-0-original.png",
+    "model": "/catalog/spree-canvas-relaxed-shirt-jacket-1-original.png",
+    "description": "Canvas Relaxed Shirt Jacket, selected from the SPREEAI demonstration collection. Explore its silhouette, compare your favorites, and build your own edit.",
+    "details": "Imported demo catalog piece. Product specifications and availability are illustrative in this local store.",
+    "material": "Refer to the original retailer for verified composition and care.",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": true,
+    "location": "Main floor",
+    "rail": "E1",
+    "size": "M",
+    "views": [
+      "/spreeai-always-on-demo/always-on-assets/spree-canvas-relaxed-shirt-jacket-1-front.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-canvas-relaxed-shirt-jacket-alex-1.webp",
+      "/spreeai-always-on-demo/always-on-assets/editorial-spree-canvas-relaxed-shirt-jacket-alex-2.webp",
+      "/spreeai-always-on-demo/always-on-assets/spree-canvas-relaxed-shirt-jacket-1-back.webp"
+    ],
+    "motion": "/spreeai-always-on-demo/always-on-assets/editorial-spree-canvas-relaxed-shirt-jacket-alex.mp4"
+  }
+]
