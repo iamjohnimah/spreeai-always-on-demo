@@ -1,0 +1,212 @@
+[
+  {
+    "id": "gucci-biker",
+    "name": "Leather biker jacket with Web detail",
+    "category": "Outerwear",
+    "price": 8900,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1775741408/874158_XNBDW_1060_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1771955132/874158_XNBDW_1060_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1775741408/874158_XNBDW_1060_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1771955132/874158_XNBDW_1060_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1771955133/874158_XNBDW_1060_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1771955133/874158_XNBDW_1060_004_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "44 IT",
+      "46 IT",
+      "48 IT",
+      "50 IT",
+      "52 IT",
+      "54 IT",
+      "56 IT"
+    ]
+  },
+  {
+    "id": "gucci-hoodie",
+    "name": "Cotton hooded sweatshirt with muted Web",
+    "category": "Tops",
+    "price": 1300,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1784652317/A0094V_XJH5T_1152_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1784652317/A0094V_XJH5T_1152_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1784652317/A0094V_XJH5T_1152_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784652317/A0094V_XJH5T_1152_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784652318/A0094V_XJH5T_1152_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784652318/A0094V_XJH5T_1152_004_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "44 IT",
+      "46 IT",
+      "48 IT",
+      "50 IT",
+      "52 IT",
+      "54 IT",
+      "56 IT"
+    ]
+  },
+  {
+    "id": "gucci-denim",
+    "name": "Coated cotton twill denim pants with Web",
+    "category": "Bottoms",
+    "price": 1600,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1784097935/A006GG_XDDH3_1000_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1784097935/A006GG_XDDH3_1000_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1784097935/A006GG_XDDH3_1000_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784097935/A006GG_XDDH3_1000_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784097936/A006GG_XDDH3_1000_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784097936/A006GG_XDDH3_1000_004_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "44 IT",
+      "46 IT",
+      "48 IT",
+      "50 IT",
+      "52 IT",
+      "54 IT",
+      "56 IT"
+    ]
+  },
+  {
+    "id": "gucci-belt-bag",
+    "name": "Flatpack large belt bag",
+    "category": "Accessories",
+    "price": 1450,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1780071313/A005ZF_FAGIB_1000_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1783722613/A005ZF_FAGIB_1000_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1780071313/A005ZF_FAGIB_1000_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1783722613/A005ZF_FAGIB_1000_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1783722614/A005ZF_FAGIB_1000_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1780071313/A005ZF_FAGIB_1000_006_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "One size"
+    ]
+  },
+  {
+    "id": "gucci-loafer",
+    "name": "Men\u2019s Cupertino loafer",
+    "category": "Shoes",
+    "price": 1050,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1782458121/A005GJ_AAHGI_1060_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1784097921/A005GJ_AAHGI_1060_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1782458121/A005GJ_AAHGI_1060_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784097921/A005GJ_AAHGI_1060_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1784097922/A005GJ_AAHGI_1060_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1782458122/A005GJ_AAHGI_1060_006_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ]
+  },
+  {
+    "id": "gucci-eyewear",
+    "name": "Mask frame sunglasses",
+    "category": "Accessories",
+    "price": 635,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1771611341/A002N8_J1691_1012_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1772443810/A002N8_J1691_1012_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1771611341/A002N8_J1691_1012_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1772443810/A002N8_J1691_1012_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1772443811/A002N8_J1691_1012_004_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1771610472/A002N8_J1691_1012_006_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "One size"
+    ]
+  },
+  {
+    "id": "gucci-knit",
+    "name": "Knit wool sweater with muted Web",
+    "category": "Knitwear",
+    "price": 1600,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1787676306/864572_XKFG6_1062_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1787676307/864572_XKFG6_1062_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1787676306/864572_XKFG6_1062_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1787676307/864572_XKFG6_1062_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1787676307/864572_XKFG6_1062_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1787676308/864572_XKFG6_1062_004_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "44 IT",
+      "46 IT",
+      "48 IT",
+      "50 IT",
+      "52 IT",
+      "54 IT",
+      "56 IT"
+    ]
+  },
+  {
+    "id": "gucci-sneaker",
+    "name": "Men\u2019s Drip sneaker",
+    "category": "Shoes",
+    "price": 980,
+    "color": "As shown",
+    "row": 0,
+    "description": "Selected from the current men\u2019s collection. Explore the silhouette, material and finishing details.",
+    "details": "Gucci reference photography. Product information and pricing captured September 21, 2026; this demonstration is not a store.",
+    "material": "Consult the original retailer for verified composition and care.",
+    "image": "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1781713870/A00A2S_FAGG8_1060_001_100_0000_Light.jpg",
+    "model": "https://media.gucci.com/style/White_Center_0_0_980x980/1789735503/A00A2S_FAGG8_1060_002_100_0000_Light.jpg",
+    "source": [
+      "https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1781713870/A00A2S_FAGG8_1060_001_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1789735503/A00A2S_FAGG8_1060_002_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1789735503/A00A2S_FAGG8_1060_003_100_0000_Light.jpg",
+      "https://media.gucci.com/style/White_Center_0_0_980x980/1781713870/A00A2S_FAGG8_1060_006_100_0000_Light.jpg"
+    ],
+    "sizes": [
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ]
+  }
+]

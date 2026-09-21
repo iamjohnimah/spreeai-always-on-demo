@@ -1,3 +1,5 @@
+import partnerCatalog from './partner-catalog.json';
+import {partner} from './brand';
 import imported from './catalog.json';
 import prepared from './prepared.json';
 export type Mode = 'out' | 'twin' | 'personal';
@@ -16,9 +18,11 @@ const extras:Product[]=[
  {id:'loafers',name:'The leather loafer',category:'Shoes',price:790,color:'Noir',row:0,description:'A polished finish, from morning through evening.',details:'Illustrative black leather loafer',material:'Sample collection; composition to be supplied by the retailer.',image:'/always-on-assets/style-2-1.webp',model:'/always-on-assets/style-1-3.webp',sizes:['37','38','39','40','41','42','43','44'],preview:'look'},
  {id:'cuff',name:'The sculptural cuff',category:'Accessories',price:280,color:'Silver',row:0,description:'A sculptural accent. A small detail with presence.',details:'Illustrative silver-tone cuff',material:'Sample collection; composition to be supplied by the retailer.',image:'/always-on-assets/style-2-2.webp',model:'/always-on-assets/style-1-3.webp',sizes:['One size'],preview:'look'},
 ];
-export const products:Product[]=[...originals.map(p=>({...p,image:`/always-on-assets/${p.id}.webp`,model:`/always-on-assets/person-3-${p.row}.webp`,sizes:['XS','S','M','L','XL','XXL'],preview:'core' as const})),...extras,...imported.map(p=>({...p,preview:prepared.includes(p.id)?'imported' as const:undefined}))];
+export const sampleProducts:Product[]=[...originals.map(p=>({...p,image:`/always-on-assets/${p.id}.webp`,model:`/always-on-assets/person-3-${p.row}.webp`,sizes:['XS','S','M','L','XL','XXL'],preview:'core' as const})),...extras,...imported.map(p=>({...p,preview:prepared.includes(p.id)?'imported' as const:undefined}))];
+export const products:Product[]=partner?[...partnerCatalog,...sampleProducts]:sampleProducts;
 export const categories=['All','Shirts','Tops','Bottoms','Outerwear','Knitwear','Dresses','Shoes','Accessories'];
 export const personalImage=(p:Product,person:number,pose='front')=>{
+ if(p.id.startsWith('gucci-'))return null;
  const directed=pose==='pose1'||pose==='left'?1:pose==='pose2'||pose==='right'?2:0;
  if(person===1&&directed)return `/always-on-assets/editorial-${p.id}-alex-${directed}.webp`;
  pose=pose==='pose1'?'left':pose==='pose2'?'right':pose;
