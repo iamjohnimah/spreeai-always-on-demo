@@ -1,5 +1,5 @@
 import {execFileSync} from 'node:child_process';
-import {readFileSync,copyFileSync,readdirSync} from 'node:fs';
+import {readFileSync,copyFileSync,readdirSync,mkdirSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -9,5 +9,6 @@ execFileSync(process.execPath,['node_modules/vite/bin/vite.js','build','--base=/
 const html=readFileSync(path.join(source,'dist/index.html'),'utf8');
 if(!html.includes('/spreeai-always-on-demo/assets/'))throw new Error('Incorrect build base');
 for(const name of readdirSync(path.join(source,'dist/assets')))copyFileSync(path.join(source,'dist/assets',name),path.join(root,'assets',name));
-for(const entry of ['index.html','404.html','account/index.html',...readdirSync(path.join(root,'product')).map(x=>`product/${x}/index.html`)])copyFileSync(path.join(source,'dist/index.html'),path.join(root,entry));
+for(const entry of ['collection',...JSON.parse(readFileSync(path.join(source,'src/always-on/partner-catalog.json'),'utf8')).map(p=>'product/'+p.id)])mkdirSync(path.join(root,entry),{recursive:true});
+for(const entry of ['collection/index.html','index.html','404.html','account/index.html',...readdirSync(path.join(root,'product')).map(x=>`product/${x}/index.html`)])copyFileSync(path.join(source,'dist/index.html'),path.join(root,entry));
 console.log('Updated shopping routes; associate and website routes preserved.');
