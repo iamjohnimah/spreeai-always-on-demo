@@ -1,0 +1,12 @@
+{
+  "purpose": "Generic Coming Soon feature previews, not personalized results for the selected garment",
+  "character": "Freja, approved SPREEAI generated adult AI twin",
+  "referenceMediaId": "029aa59e-7466-471f-a224-5d2f15cdd69c",
+  "backImageJob": "ecf82ca5-b984-4da8-9b1e-f86443d1b1c0",
+  "backImageModel": "gpt_image_2",
+  "videoJob": "04c948c6-5b3e-4e37-b0c5-dfcd896e2d8c",
+  "videoModel": "seedance_2_5",
+  "requestedDurationSeconds": 10,
+  "aspectRatio": "9:16",
+  "labels": "Coming Soon and concept-preview captions are rendered by the shared product gallery."
+}
