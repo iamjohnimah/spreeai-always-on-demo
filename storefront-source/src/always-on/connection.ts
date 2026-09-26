@@ -1,4 +1,5 @@
 import {useSyncExternalStore} from 'react';
+import {clearHistory} from './history';
 export const API='https://api.dev.spreeai.com';
 export const PARTNER='demo-site';
 export const CLIENT='0176d724-9f01-0000-0100-6d3312d5c396';
@@ -15,12 +16,12 @@ function save(){try{sessionStorage.setItem(key,JSON.stringify(session));sessionS
 export function useConnectedProfile(){return useSyncExternalStore(f=>{listeners.add(f);return()=>{listeners.delete(f)}},()=>profile)}
 export function currentProfile(){return profile}
 export function selectIdentity(identity:Identity|null){profile={...profile,identity,version:profile.version+1};save()}
-export function clearConnectedSession(){epoch++;session=null;flight=null;productionSession=null;productionFlight=null;productionIdentities.clear();profile={identity:null,authenticated:false,name:'',version:profile.version+1};save()}
+export function clearConnectedSession(){clearHistory();epoch++;session=null;flight=null;productionSession=null;productionFlight=null;productionIdentities.clear();profile={identity:null,authenticated:false,name:'',version:profile.version+1};save()}
 async function raw(path:string,method:string,body?:unknown,token?:string,base=API){const r=await fetch(base+path,{method,headers:{...(body instanceof FormData?{}:{'Content-Type':'application/json'}),...(token?{Authorization:'Bearer '+token}:{})},body:body===undefined?undefined:body instanceof FormData?body:JSON.stringify(body),signal:AbortSignal.timeout(body instanceof FormData?60000:30000)});const d=await r.json().catch(()=>null);if(!r.ok)throw new Error(d?.errors?.[0]?.message||d?.message||`SPREEAI could not complete this request (${r.status}).`);return d}
 export async function ensureSession(){if(session&&session.expiresAt>Date.now()+60000)return session;if(flight)return flight;const start=epoch;flight=(async()=>{const d=await raw(session?'/v1/auth/refresh':'/v1/user/guest','POST',session?{refresh_token:session.refresh_token,partner_id:PARTNER}:{partner_id:PARTNER,language:'en'});if(epoch!==start)throw Error('Your session changed. Please try again.');if(!d?.access_token)throw Error('Unable to start your SPREEAI session.');session={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};save();return session!})().finally(()=>{if(epoch===start)flight=null});return flight}
 export async function request<T>(path:string,method='GET',body?:unknown,base=API):Promise<T>{const start=epoch,s=await ensureSession();if(start!==epoch)throw Error('Your session changed.');const d=await raw(path,method,body,s.access_token,base);if(start!==epoch)throw Error('Your session changed. Please try again.');return d}
 export async function login(email:string,password:string){const start=epoch;const d=await raw('/v1/auth/login','POST',{email,password,partner_id:PARTNER,client_id:CLIENT});if(start!==epoch)throw Error('Your session changed.');acceptSession(d)}
-function acceptSession(d:Session){if(!d?.access_token)throw Error('Sign-in did not return a session.');epoch++;session={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};profile={identity:null,authenticated:true,name:'',version:profile.version+1};save()}
+function acceptSession(d:Session){clearHistory();if(!d?.access_token)throw Error('Sign-in did not return a session.');epoch++;session={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};profile={identity:null,authenticated:true,name:'',version:profile.version+1};save()}
 export async function createAccount(email:string,password:string){await raw('/v2/user','POST',{email,password,partner_id:PARTNER,language:'en'})}
 export async function confirmAccount(email:string,code:string){acceptSession(await raw('/v1/user/confirmsignup','POST',{email,confirmation_code:code}))}
 export const forgotPassword=(email:string)=>raw('/v1/auth/forgotpassword','POST',{email});
