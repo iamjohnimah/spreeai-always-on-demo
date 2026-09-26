@@ -1,4 +1,5 @@
 import {useSyncExternalStore} from 'react';
+import {request} from './connection';
 import catalog from './live-catalog.json';
 import imageCache from './catalog-images.json';
 const imageURL=(url:string)=>(imageCache as Record<string,string>)[url]||url;
@@ -8,11 +9,11 @@ export const twins=[{name:'Yuna',height:168,weight:57,size:'S'},{name:'Alex',hei
 type CatalogGarment={id:string;title:string;partner_id:string;categories?:{name:string}[];variants?:{color?:{name?:string};size_groups?:{sizes:string[]}[];price?:{amount?:string;currency?:string};images?:{tag?:string|null;url:string}[]}[]};
 export function normalizeCatalog(rows:CatalogGarment[]):Product[]{return rows.flatMap(g=>{
  if(!g||typeof g.id!=='string'||typeof g.title!=='string'||!Array.isArray(g.variants))return [];
- const v=g.variants[0],images=v?.images?.filter(i=>/^https:\/\/(api-minio\.prod\.spreeai\.com|assets\.spreeai\.com)\//.test(i.url))||[];
+ const v=g.variants[0],images=v?.images?.filter(i=>/^https:\/\/(api-minio\.(?:dev|prod)\.spreeai\.com|assets\.spreeai\.com)\//.test(i.url))||[];
  if(!images.length)return [];
  const flat=images.find(i=>i.tag==='flat')||images[0],model=images.find(i=>i.tag==='model')||flat;
  const names=(g.categories||[]).map(c=>c.name);const n=g.title.toLowerCase();
- const category=names.includes('Dress')?'Dresses':names.includes('Footwear')?'Shoes':names.includes('Bottom')?'Bottoms':names.some(x=>['Bracelet','Scarf','Earrings','Accessory'].includes(x))?'Accessories':/jacket|blazer|coat/.test(n)?'Outerwear':/knit|sweater|cardigan/.test(n)?'Knitwear':/shirt|blouse/.test(n)?'Shirts':'Tops';
+ const category=names.includes('Dress')?'Dresses':names.includes('Footwear')?'Shoes':names.includes('Bottom')?'Bottoms':names.some(x=>['Bracelet','Scarf','Earrings','Accessory','Accessories','Bag'].includes(x))||/earring|clutch|bag|poppy/.test(n)?'Accessories':/jacket|blazer|coat/.test(n)?'Outerwear':/knit|sweater|cardigan/.test(n)?'Knitwear':/shirt|blouse/.test(n)?'Shirts':'Tops';
  const priceLabel=v.price?.amount||'Price on request';const price=Number(priceLabel.replace(/[^\d.]/g,''))||0;
  const sizes=[...new Set(g.variants.flatMap(x=>(x.size_groups||[]).flatMap(s=>s.sizes)).filter(x=>typeof x==='string'))];
  return [{id:'spree-'+g.id,garmentId:g.id,partnerId:g.partner_id||'demo-site',name:g.title,category,price,priceLabel,currency:v.price?.currency||'USD',color:v.color?.name||'As shown',row:-1,description:`${g.title}, from the SPREEAI demo collection. Explore the original photography and see this exact garment on you with SPREEAI.`,details:'Product imagery, available demo sizes and listed price are supplied by the official SPREEAI demo catalog.',material:'Consult the retailer for composition, care and purchase availability.',image:imageURL(flat.url),model:imageURL(model.url),source:images.map(i=>imageURL(i.url)),sizes}];
@@ -22,10 +23,7 @@ let status='snapshot',revision=0,pending:Promise<void>|undefined;
 const listeners=new Set<()=>void>();
 export function useCatalog(){useSyncExternalStore(fn=>{listeners.add(fn);return()=>{listeners.delete(fn)}},()=>revision);return status}
 export function refreshCatalog(){if(pending)return pending;pending=(async()=>{try{
- const base='https://api.spreeai.com';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),18000);
- try{const guest=await fetch(base+'/v1/user/guest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partner_id:'demo-site'}),signal:controller.signal});if(!guest.ok)throw Error('Guest connection unavailable');const auth=await guest.json();if(typeof auth.access_token!=='string')throw Error('Missing guest token');
- const response=await fetch(base+'/v3/protea/garments',{headers:{'X-Spree-Auth':auth.access_token},signal:controller.signal});if(!response.ok)throw Error('Catalog unavailable');const payload=await response.json();if(!Array.isArray(payload.garments))throw Error('Invalid catalog');const next=normalizeCatalog(payload.garments);if(!next.length)throw Error('Empty catalog');products.splice(0,products.length,...next);status='live';
- }finally{clearTimeout(timer)}
+ const payload=await request<{garments:CatalogGarment[]}>('/v3/protea/garments');if(!Array.isArray(payload.garments))throw Error('Invalid catalog');const next=normalizeCatalog(payload.garments.filter(g=>g.partner_id==='demo-site'));if(!next.length)throw Error('Empty catalog');products.splice(0,products.length,...next);status='live';
  }catch{status='snapshot'}finally{revision++;listeners.forEach(fn=>fn())}})();return pending}
 export const categories=['All','Shirts','Tops','Bottoms','Outerwear','Knitwear','Dresses','Shoes','Accessories'];
 // Local account previews never substitute generated sample people for real catalog garments.

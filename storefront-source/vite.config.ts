@@ -13,7 +13,7 @@ function demoAssetBase():Plugin {
     configResolved(config){base=config.base},
     transform(code,id){
       if(base==='/'||!id.includes('/src/always-on/'))return;
-      return code.replace(/(["'`(])\/(always-on-assets\/|catalog\/|sa-logo\.svg|spreeai-logo\.svg)/g,(_,quote,asset)=>`${quote}/spreeai-always-on-demo/${asset}`);
+      return code.replace(/(["'`(])\/(always-on-assets\/|catalog\/|sa-logo\.svg|spreeai-logo\.svg)/g,(_,quote,asset)=>`${quote}${asset.startsWith('always-on-assets/')?'https://iamjohnimah.github.io':''}/spreeai-always-on-demo/${asset}`);
     },
   };
 }
