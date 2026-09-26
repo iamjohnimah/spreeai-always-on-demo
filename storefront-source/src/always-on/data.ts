@@ -1,29 +1,32 @@
 import {useSyncExternalStore} from 'react';
-import {request} from './connection';
+import {request,productionRequest} from './connection';
+import productionCatalog from './production-catalog.json';
 import catalog from './live-catalog.json';
 import imageCache from './catalog-images.json';
 const imageURL=(url:string)=>(imageCache as Record<string,string>)[url]||url;
 export type Mode='out'|'twin'|'personal';
-export type Product={id:string;garmentId:string;partnerId:string;name:string;category:string;price:number;priceLabel:string;currency:string;color:string;row:number;description:string;details:string;material:string;image:string;model:string;sizes:string[];source?:string[];preview?:'core'|'look'|'imported'};
+export type Product={environment?:'dev'|'prod';id:string;garmentId:string;partnerId:string;name:string;category:string;price:number;priceLabel:string;currency:string;color:string;row:number;description:string;details:string;material:string;image:string;model:string;sizes:string[];source?:string[];preview?:'core'|'look'|'imported'};
 export const twins=[{name:'Yuna',height:168,weight:57,size:'S'},{name:'Alex',height:183,weight:77,size:'M'},{name:'Sofia',height:170,weight:86,size:'XL'},{name:'Ravi',height:178,weight:73,size:'M'},{name:'Noa',height:175,weight:64,size:'S'},{name:'Amara',height:172,weight:89,size:'XL'}];
 type CatalogGarment={id:string;title:string;partner_id:string;categories?:{name:string}[];variants?:{color?:{name?:string};size_groups?:{sizes:string[]}[];price?:{amount?:string;currency?:string};images?:{tag?:string|null;url:string}[]}[]};
-export function normalizeCatalog(rows:CatalogGarment[]):Product[]{return rows.flatMap(g=>{
+export function normalizeCatalog(rows:CatalogGarment[],environment:'dev'|'prod'='dev'):Product[]{return rows.flatMap(g=>{
  if(!g||typeof g.id!=='string'||typeof g.title!=='string'||!Array.isArray(g.variants))return [];
- const v=g.variants[0],images=v?.images?.filter(i=>/^https:\/\/(api-minio\.(?:dev|prod)\.spreeai\.com|assets\.spreeai\.com)\//.test(i.url))||[];
+ const v=g.variants[0],images=g.variants.flatMap(v=>v.images||[]).filter(i=>/^https:\/\/(api-minio\.(?:dev|prod)\.spreeai\.com|assets\.spreeai\.com)\//.test(i.url))||[];
  if(!images.length)return [];
  const flat=images.find(i=>i.tag==='flat')||images[0],model=images.find(i=>i.tag==='model')||flat;
  const names=(g.categories||[]).map(c=>c.name);const n=g.title.toLowerCase();
  const category=names.includes('Dress')?'Dresses':names.includes('Footwear')?'Shoes':names.includes('Bottom')?'Bottoms':names.some(x=>['Bracelet','Scarf','Earrings','Accessory','Accessories','Bag'].includes(x))||/earring|clutch|bag|poppy/.test(n)?'Accessories':/jacket|blazer|coat/.test(n)?'Outerwear':/knit|sweater|cardigan/.test(n)?'Knitwear':/shirt|blouse/.test(n)?'Shirts':'Tops';
  const priceLabel=v.price?.amount||'Price on request';const price=Number(priceLabel.replace(/[^\d.]/g,''))||0;
  const sizes=[...new Set(g.variants.flatMap(x=>(x.size_groups||[]).flatMap(s=>s.sizes)).filter(x=>typeof x==='string'))];
- return [{id:'spree-'+g.id,garmentId:g.id,partnerId:g.partner_id||'demo-site',name:g.title,category,price,priceLabel,currency:v.price?.currency||'USD',color:v.color?.name||'As shown',row:-1,description:`${g.title}, from the SPREEAI demo collection. Explore the original photography and see this exact garment on you with SPREEAI.`,details:'Product imagery, available demo sizes and listed price are supplied by the official SPREEAI demo catalog.',material:'Consult the retailer for composition, care and purchase availability.',image:imageURL(flat.url),model:imageURL(model.url),source:images.map(i=>imageURL(i.url)),sizes}];
+ return [{environment,id:'spree-'+g.id,garmentId:g.id,partnerId:g.partner_id||'demo-site',name:g.title,category,price,priceLabel,currency:v.price?.currency||'USD',color:v.color?.name||'As shown',row:-1,description:`${g.title}, from the SPREEAI demo collection. Explore the original photography and see this exact garment on you with SPREEAI.`,details:'Product imagery, available demo sizes and listed price are supplied by the official SPREEAI demo catalog.',material:'Consult the retailer for composition, care and purchase availability.',image:imageURL(flat.url),model:imageURL(model.url),source:images.map(i=>imageURL(i.url)),sizes}];
 })}
-export const products:Product[]=normalizeCatalog(catalog);
+export const products:Product[]=[...normalizeCatalog(catalog),...normalizeCatalog(productionCatalog,'prod')];
 let status='snapshot',revision=0,pending:Promise<void>|undefined;
 const listeners=new Set<()=>void>();
 export function useCatalog(){useSyncExternalStore(fn=>{listeners.add(fn);return()=>{listeners.delete(fn)}},()=>revision);return status}
 export function refreshCatalog(){if(pending)return pending;pending=(async()=>{try{
- const payload=await request<{garments:CatalogGarment[]}>('/v3/protea/garments');if(!Array.isArray(payload.garments))throw Error('Invalid catalog');const next=normalizeCatalog(payload.garments.filter(g=>g.partner_id==='demo-site'));if(!next.length)throw Error('Empty catalog');products.splice(0,products.length,...next);status='live';
+ const results=await Promise.allSettled([request<{garments:CatalogGarment[]}>('/v3/protea/garments'),productionRequest<{garments:CatalogGarment[]}>('/v3/protea/garments')]);
+ const next=results.flatMap((result,index)=>{const environment=index?'prod':'dev';if(result.status==='rejected'||!Array.isArray(result.value.garments))return products.filter(p=>(p.environment||'dev')===environment);return normalizeCatalog(result.value.garments.filter(g=>!g.partner_id||g.partner_id.toLowerCase()==='demo-site'),environment)});
+ if(!next.length)throw Error('Empty catalog');products.splice(0,products.length,...next);status=results.every(r=>r.status==='fulfilled')?'live':'snapshot';
  }catch{status='snapshot'}finally{revision++;listeners.forEach(fn=>fn())}})();return pending}
 export const categories=['All','Shirts','Tops','Bottoms','Outerwear','Knitwear','Dresses','Shoes','Accessories'];
 // Local account previews never substitute generated sample people for real catalog garments.

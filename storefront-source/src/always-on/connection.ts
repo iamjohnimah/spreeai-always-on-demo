@@ -1,4 +1,5 @@
 import {useSyncExternalStore} from 'react';
+import {clearHistory} from './history';
 export const API='https://api.dev.spreeai.com';
 export const PARTNER='demo-site';
 export const CLIENT='0176d724-9f01-0000-0100-6d3312d5c396';
@@ -15,12 +16,12 @@ function save(){try{sessionStorage.setItem(key,JSON.stringify(session));sessionS
 export function useConnectedProfile(){return useSyncExternalStore(f=>{listeners.add(f);return()=>{listeners.delete(f)}},()=>profile)}
 export function currentProfile(){return profile}
 export function selectIdentity(identity:Identity|null){profile={...profile,identity,version:profile.version+1};save()}
-export function clearConnectedSession(){epoch++;session=null;flight=null;profile={identity:null,authenticated:false,name:'',version:profile.version+1};save()}
+export function clearConnectedSession(){clearHistory();epoch++;session=null;flight=null;productionSession=null;productionFlight=null;productionIdentities.clear();profile={identity:null,authenticated:false,name:'',version:profile.version+1};save()}
 async function raw(path:string,method:string,body?:unknown,token?:string,base=API){const r=await fetch(base+path,{method,headers:{...(body instanceof FormData?{}:{'Content-Type':'application/json'}),...(token?{Authorization:'Bearer '+token}:{})},body:body===undefined?undefined:body instanceof FormData?body:JSON.stringify(body),signal:AbortSignal.timeout(body instanceof FormData?60000:30000)});const d=await r.json().catch(()=>null);if(!r.ok)throw new Error(d?.errors?.[0]?.message||d?.message||`SPREEAI could not complete this request (${r.status}).`);return d}
 export async function ensureSession(){if(session&&session.expiresAt>Date.now()+60000)return session;if(flight)return flight;const start=epoch;flight=(async()=>{const d=await raw(session?'/v1/auth/refresh':'/v1/user/guest','POST',session?{refresh_token:session.refresh_token,partner_id:PARTNER}:{partner_id:PARTNER,language:'en'});if(epoch!==start)throw Error('Your session changed. Please try again.');if(!d?.access_token)throw Error('Unable to start your SPREEAI session.');session={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};save();return session!})().finally(()=>{if(epoch===start)flight=null});return flight}
 export async function request<T>(path:string,method='GET',body?:unknown,base=API):Promise<T>{const start=epoch,s=await ensureSession();if(start!==epoch)throw Error('Your session changed.');const d=await raw(path,method,body,s.access_token,base);if(start!==epoch)throw Error('Your session changed. Please try again.');return d}
 export async function login(email:string,password:string){const start=epoch;const d=await raw('/v1/auth/login','POST',{email,password,partner_id:PARTNER,client_id:CLIENT});if(start!==epoch)throw Error('Your session changed.');acceptSession(d)}
-function acceptSession(d:Session){if(!d?.access_token)throw Error('Sign-in did not return a session.');epoch++;session={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};profile={identity:null,authenticated:true,name:'',version:profile.version+1};save()}
+function acceptSession(d:Session){clearHistory();if(!d?.access_token)throw Error('Sign-in did not return a session.');epoch++;session={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};profile={identity:null,authenticated:true,name:'',version:profile.version+1};save()}
 export async function createAccount(email:string,password:string){await raw('/v2/user','POST',{email,password,partner_id:PARTNER,language:'en'})}
 export async function confirmAccount(email:string,code:string){acceptSession(await raw('/v1/user/confirmsignup','POST',{email,confirmation_code:code}))}
 export const forgotPassword=(email:string)=>raw('/v1/auth/forgotpassword','POST',{email});
@@ -41,3 +42,23 @@ export async function turn(front:string,back:string,signal:AbortSignal){let d=aw
 export type FitMap={recommended?:string;sizes:{size:string;zones:{point:string;size_in:number;body_in?:number;verdict?:string;source?:string}[]}[]};
 export const hasFitConnection=()=>location.hostname==='127.0.0.1'||location.hostname==='localhost'||location.hostname==='demo-store.dev.spreeai.com';
 export async function fitMap(garmentId:string,identity:Identity,name:string,category:string,sizes:string[]){if(!hasFitConnection())throw Error('Detailed fit maps are available in the connected development preview.');return request<FitMap>('/api/size-recommendation/garment/'+encodeURIComponent(garmentId)+'/fit','POST',{profile:{gender:identity.bodyType==='Masculine'?'male':'female',height_cm:identity.height,weight_kg:identity.weight},usual_size:identity.kind==='twin'?identity.usualSize:undefined,garment:{name,category},available_sizes:sizes},'')}
+
+// Production has its own guest session. Never send development credentials to it.
+const PROD_API='https://api.spreeai.com';
+let productionSession:Session|null=null,productionFlight:Promise<Session>|null=null;
+export async function productionRequest<T>(path:string,method='GET',body?:unknown):Promise<T>{
+ const start=epoch;
+ if(!productionSession||productionSession.expiresAt<Date.now()+60000){if(!productionFlight)productionFlight=raw('/v1/user/guest','POST',{partner_id:PARTNER,language:'en'},undefined,PROD_API).then(d=>{if(epoch!==start)throw Error('Your session changed.');if(!d?.access_token)throw Error('Unable to connect to the public demo.');productionSession={...d,expiresAt:Date.now()+Number(d.expires_in)*1000};return productionSession!}).finally(()=>{if(epoch===start)productionFlight=null});await productionFlight}
+ if(epoch!==start)throw Error('Your session changed.');const result=await raw(path,method,body,productionSession!.access_token,PROD_API);if(epoch!==start)throw Error('Your session changed.');return result;
+}
+const productionIdentities=new Map<string,Promise<Identity>>();
+export async function productionIdentity(identity:Identity){
+ const identityEpoch=epoch;const key=profile.version+':'+identity.id;
+ if(!productionIdentities.has(key))productionIdentities.set(key,(async()=>{
+  if(identity.kind==='twin'){const list=await productionRequest<{avatars:Avatar[]}>('/v1/avatars?partnerID=demo-site&inheritpartner=true&inheritdefault=true');const match=list.avatars?.find(a=>a.name.toLowerCase()===identity.name.toLowerCase());if(match)return {...identity,id:match.id}}
+  const response=await fetch(identity.url);if(!response.ok)throw Error('Your photo could not be connected to this collection.');const blob=await response.blob();if(epoch!==identityEpoch)throw Error('Your session changed.');const form=new FormData();form.append('user_image',blob,'profile.jpg');form.append('source','web-sdk');form.append('is_uploaded','true');const uploaded=await productionRequest<{id:string}>('/v2/store-experience/user-images','POST',form);return {...identity,id:uploaded.id};
+ })().catch(e=>{productionIdentities.delete(key);throw e}));return productionIdentities.get(key)!;
+}
+export async function productionRender(ids:string[],identity:Identity,signal:AbortSignal,size?:string,baseSize?:string){const version=profile.version;const linked=await productionIdentity(identity);if(profile.version!==version)throw Error('Your profile changed.');const d=await productionRequest<{request_id:string}>(`/${size?'v3.1':'v3'}/store-experience/tryon`,'POST',{garment_set:{garments:ids.map(garment_id=>({garment_id}))},partner_id:PARTNER,image_id:linked.id,source:'web-sdk',no_remove_background:false,...(size&&baseSize?{size,base_size:baseSize}:{})});return productionPoll<Render>('/v1/user-assets/tryon/'+encodeURIComponent(d.request_id),signal,d=>d.status==='COMPLETE',d=>d.status==='FAILED')}
+async function productionPoll<T>(path:string,signal:AbortSignal,done:(d:T)=>boolean,failed:(d:T)=>boolean):Promise<T>{const start=Date.now();while(!signal.aborted){const d=await productionRequest<T>(path);if(failed(d))throw Error('This personal view is temporarily unavailable.');if(done(d))return d;if(Date.now()-start>180000)throw Error('This is taking longer than expected.');await new Promise(r=>setTimeout(r,2000))}throw Error('Cancelled')}
+export async function productionSizing(garmentId:string,identity:Identity,signal:AbortSignal){const d=await productionRequest<{request_id:string}>('/v2/store-experience/sizing','POST',{garment_id:garmentId,height_centimeters:identity.height,weight_kilograms:identity.weight,body_type:identity.bodyType,source:'web-sdk'});return productionPoll<Sizing>('/v1/user-assets/sizing/'+encodeURIComponent(d.request_id),signal,d=>!!d.sizing||[d.status,d.result].some(s=>s==='COMPLETE'||s==='SUCCESS'||/^\d{4}$/.test(s||'')),d=>[d.status,d.result].some(s=>['FAILED','FAILURE','ERROR'].includes((s||'').toUpperCase())))}
