@@ -1,3 +1,4 @@
+import VoiceStylist from './VoiceStylist';
 import LookPreview from './LookPreview';
 import {useHistory} from './history';
 import CompleteLook from './CompleteLook';
@@ -24,6 +25,7 @@ export default function Stylist({person,voice='director',currentProduct,savedOnl
  const isReference=(_ids:string[])=>false;
  function persist(next:Look[]){setLooks(next);localStorage.setItem('ao-looks',JSON.stringify(next))}
  function suggest(value:string){setOccasion(value);setBusy(true);setTimeout(()=>{const relaxed=/weekend|casual|travel|comfortable/i.test(value);setSelected(wardrobe.filter(p=>(!relaxed||p.category!=='Outerwear')&&(currentProduct?.category!=='Dresses'||p.category!=='Bottoms')).map(p=>p.id));setName(relaxed?'An unhurried weekend':'An evening in the city');setAnswer(relaxed?'Keep the look light with a simple top and relaxed bottoms, then add shoes and one accessory from the collection.':'Use one statement piece as your starting point and keep the accompanying pieces restrained. Explore the actual catalog options below.');setBusy(false)},650)}
+ if(!building&&!viewSaved)return <VoiceStylist onBag={onBag} onProduct={onProduct}/>;
  if(building&&!viewSaved)return <CompleteLook product={currentProduct} onBag={onBag}/>;
  return <div className={`stylist ${embedded?'embedded-builder':'modal-body'}`}><p className="eyebrow">{voice==='director'?'SPREEAI / THE CREATIVE DIRECTOR’S EDIT':'SPREEAI / PERSONAL SHOPPING'}</p><h2>{viewSaved?'Looks worth keeping.':building?'Build your outfit.':voice==='director'?'From the creative studio.':'Your personal shopping edit.'}</h2>{!embedded&&<div className="style-tabs"><button className={!viewSaved&&!building?'selected':''} onClick={()=>{setViewSaved(false);setBuilding(false)}}>AI stylist</button><button className={viewSaved?'selected':''} onClick={()=>setViewSaved(true)}>Saved looks ({looks.length})</button></div>}
  {(viewSaved||building)&&<FeatureNote key={viewSaved?'saved':'builder'} panel={viewSaved?'saved':'builder'} inline/>}
