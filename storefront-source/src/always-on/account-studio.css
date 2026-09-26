@@ -42,3 +42,4 @@
 :root[data-theme="dark"] .upload-preview{border-color:#444}:root[data-theme="dark"] .upload-preview-details small{color:#bbb}
 @media(max-width:600px){.upload-preview-image img{height:280px}.upload-preview-details{padding:16px}}
 .account-contained>.modal-body,.account-contained>.stylist{padding:8px 0;max-width:none}.account-contained .connected-edit>h2,.account-contained .stylist>h2{font-size:clamp(30px,3vw,44px);line-height:1.15}.account-contained .journey-start{border-radius:14px}.account-contained{min-width:0}
+.complete-editorial .complete-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}.complete-loading .spree-loading{width:min(70%,300px)}
