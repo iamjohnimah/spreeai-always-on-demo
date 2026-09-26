@@ -1,0 +1,23 @@
+[
+  {
+    "scene": "online",
+    "width": 1080,
+    "height": 1920,
+    "duration": 8.041666666666666,
+    "bytes": 1834898
+  },
+  {
+    "scene": "in-store",
+    "width": 1080,
+    "height": 1920,
+    "duration": 8.041666666666666,
+    "bytes": 2724674
+  },
+  {
+    "scene": "vic",
+    "width": 1080,
+    "height": 1920,
+    "duration": 8.041666666666666,
+    "bytes": 1959563
+  }
+]
