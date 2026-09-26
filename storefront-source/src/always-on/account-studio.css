@@ -93,3 +93,13 @@
 [data-theme=dark] .personal-locked.fit-message p{color:#bfc1b9}
 [data-theme=dark] .fit-message-action{background:#eee;color:#222}
 @media(max-width:600px){.personal-locked.fit-message{padding:24px 18px}.fit-message .fit-message-card{padding:22px 20px 26px}.fit-message-kicker{font-size:8px;letter-spacing:1px}.fit-message-size{font-size:11px}.personal-locked.fit-message p{font-size:14px}}
+.personal-thumbnails button{width:132px;padding:7px 7px 12px;border-radius:10px;transition:border-color .2s,background .2s;text-align:center}
+.personal-thumbnails img,.personal-thumbnails button>span{width:116px;height:116px;border-radius:6px}
+.personal-thumbnails small{font-size:14px;line-height:1.25;padding:10px 0 5px}
+.personal-thumbnails em{display:block;font-size:10px;line-height:1.35;font-style:normal;color:#7b7d78;white-space:nowrap}
+.personal-thumbnails .thumbnail-coming-soon{color:#69725f}
+.personal-thumbnails button[aria-pressed=true]{background:#fff;border-color:#878b82}
+[data-theme=dark] .personal-thumbnails button[aria-pressed=true]{background:#30312d;border-color:#aaa}
+[data-theme=dark] .personal-thumbnails em{color:#b9bcb3}
+@media(max-width:600px){.personal-thumbnails button{width:118px}.personal-thumbnails img,.personal-thumbnails button>span{width:102px;height:100px}.personal-thumbnails small{font-size:13px}.personal-thumbnails em{font-size:9px}}
+.personal-thumbnails em{font-family:inherit}
