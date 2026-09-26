@@ -93,7 +93,7 @@ export default function App(){
   <a className="skip" href="#content">Skip to content</a>
   <div className="announcement"><span>YOUR PERSPECTIVE. ALWAYS ON.</span><a href="https://iamjohnimah.github.io/spreeai-always-on-demo/experience-selection/">Explore experiences ↗</a></div>
   <header className={home?'store-header home-header':'store-header'}>
-   <div className="header-side"><button className="signup-cta" onClick={()=>{setAccountStart(true);open('account')}}>Sign up</button></div>
+   <div className="header-side header-signup"><a className="signup-cta" href="https://spreeai.com/create-account">Sign Up</a></div>
    <Link to="/" className="wordmark" aria-label="SPREEAI home"><img src={spreeLogo} alt="SPREEAI"/></Link>
    <div className="header-side right"><button onClick={()=>open('bag')} aria-label={`Shopping bag, ${bag.length} items`}><svg viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z M9 8V5a3 3 0 0 1 6 0v3"/></svg>{bag.length>0&&<small>{bag.length}</small>}</button><button onClick={()=>open('account')} aria-label="My Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg>{connected.identity&&<i className="account-dot"/>}</button><button aria-label="Search collection" onClick={()=>{nav('/collection');setFilterOpen(true);setTimeout(()=>document.querySelector<HTMLInputElement>('.catalog-search input')?.focus(),50)}}><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg></button><button aria-label="Open menu" onClick={()=>open('menu')}><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>MENU</span></button></div>
   </header>
