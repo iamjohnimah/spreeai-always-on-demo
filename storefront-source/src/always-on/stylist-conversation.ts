@@ -1,0 +1,18 @@
+import type {Product} from './data';
+export type Brief={occasion:string;direction:string;budget:number|null;category:string;avoid:string[]};
+export const emptyBrief:Brief={occasion:'',direction:'',budget:null,category:'',avoid:[]};
+export function understand(text:string,previous:Brief):Brief{
+ const s=text.toLowerCase(),b={...previous,avoid:[...previous.avoid]};
+ if(/wedding/.test(s))b.occasion='A wedding';else if(/work|office|meeting/.test(s))b.occasion='Work';else if(/getaway|holiday|vacation|beach|travel/.test(s))b.occasion='A getaway';else if(/dinner|date|evening|party/.test(s))b.occasion='An evening out';else if(/weekend|everyday|casual/.test(s))b.occasion='Everyday';
+ if(/black.tie|formal/.test(s))b.direction='Formal';else if(/relaxed|comfortable|easy|casual/.test(s))b.direction='Relaxed';else if(/bold|statement|colorful|colourful/.test(s))b.direction='Statement';else if(/minimal|understated|classic|tailored/.test(s))b.direction='Understated';
+ if(/dress|gown/.test(s)&&!/no dress|not a dress/.test(s))b.category='Dresses';else if(/suit|trouser|pants|separates|menswear/.test(s))b.category='Separates';else if(/bag|earring|accessor/.test(s))b.category='Accessories';
+ const budget=s.match(/(?:under|below|budget(?: of| is)?|up to|less than)\s*\$?([\d,]+(?:\.\d+)?)/);if(budget)b.budget=Number(budget[1].replaceAll(',',''));if(/no budget|no limit|flexible budget|open budget/.test(s))b.budget=null;
+ if(/no (?:white|ivory)|avoid (?:white|ivory)/.test(s)&&!b.avoid.includes('white'))b.avoid.push('white');
+ return b;
+}
+export function selectPieces(catalog:Product[],brief:Brief,offset=0){
+ const candidates=catalog.filter(p=>{const t=(p.name+' '+p.color).toLowerCase();if(brief.budget!==null&&(p.currency!=='USD'||p.price<=0||p.price>brief.budget))return false;if(brief.avoid.includes('white')&&/white|ivory|cream/.test(t))return false;if(brief.category==='Dresses')return p.category==='Dresses';if(brief.category==='Separates')return ['Outerwear','Shirts','Tops','Bottoms','Knitwear'].includes(p.category);if(brief.category==='Accessories')return ['Accessories','Shoes'].includes(p.category);return ['Dresses','Outerwear','Shirts','Knitwear','Tops','Bottoms'].includes(p.category)});
+ const score=(p:Product)=>{let n=0;const t=(p.name+' '+p.description+' '+p.color).toLowerCase();if(brief.occasion==='A wedding'&&/dress|gown|silk|satin|suit|blazer/.test(t))n+=4;if(brief.occasion==='A getaway'&&/linen|resort|cotton|short|floral/.test(t))n+=4;if(brief.occasion==='Work'&&/shirt|blazer|trouser|tailored/.test(t))n+=4;if(brief.direction==='Statement'&&/floral|printed|pink|red|embellish|sequin/.test(t))n+=4;if(brief.direction==='Understated'&&/black|navy|knit|wool|linen/.test(t))n+=4;if(brief.direction==='Formal'&&/gown|satin|silk|evening|blazer/.test(t))n+=4;if(brief.direction==='Relaxed'&&/relaxed|cotton|linen|knit|jersey/.test(t))n+=4;return n};
+ return candidates.map((p,i)=>({p,i,score:score(p)})).sort((a,b)=>b.score-a.score||a.i-b.i).map(x=>x.p).slice(offset,offset+4);
+}
+export function completePieces(catalog:Product[],anchor:Product,brief:Brief){const other=catalog.filter(p=>p.id!==anchor.id&&(p.environment||'dev')===(anchor.environment||'dev')&&(brief.budget===null||(p.currency==='USD'&&p.price>0&&p.price<=brief.budget)));const rows=[anchor];if(!['Dresses','Bottoms'].includes(anchor.category)){const bottom=other.find(p=>p.category==='Bottoms');if(bottom)rows.push(bottom)}if(anchor.category==='Bottoms'){const top=other.find(p=>['Shirts','Tops','Knitwear'].includes(p.category));if(top)rows.push(top)}for(const category of ['Shoes','Accessories']){const p=other.find(p=>p.category===category);if(p&&!rows.some(x=>x.id===p.id))rows.push(p)}return rows}
