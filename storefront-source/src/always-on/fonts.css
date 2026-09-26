@@ -33,3 +33,7 @@
   font-display: swap;
   src: url(/spreeai-always-on-demo/always-on-assets/font-4.ttf) format('truetype');
 }
+
+@font-face{font-family:Afacad;font-weight:400;font-display:swap;src:url('/spreeai-always-on-demo/experience-selection/assets/fonts/afacad-400.ttf') format('truetype')}
+@font-face{font-family:Afacad;font-weight:600;font-display:swap;src:url('/spreeai-always-on-demo/experience-selection/assets/fonts/afacad-600.ttf') format('truetype')}
+@font-face{font-family:Afacad;font-weight:700;font-display:swap;src:url('/spreeai-always-on-demo/experience-selection/assets/fonts/afacad-700.ttf') format('truetype')}
