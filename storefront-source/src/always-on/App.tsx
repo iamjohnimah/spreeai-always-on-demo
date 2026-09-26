@@ -1,19 +1,20 @@
+import {GlobalLoading} from './LoadingBar';
 import BrandFooter from './BrandFooter';
 import {configure,readJourney,togglePiece} from '../../../journey/store.js';
 import Journey, {useJourney} from './Journey';
 import CheckoutCelebration from './CheckoutCelebration';
 import {useState,useEffect} from 'react';
-import type {FormEvent} from 'react';
+import type {FormEvent,CSSProperties} from 'react';
 import {Link,useLocation,useNavigate} from 'react-router';
 import * as Dialog from '@radix-ui/react-dialog';
-import {products,twins,asset,money,sampleProfile,categories,displayImage,editorialImage,useCatalog,refreshCatalog} from './data';
+import {products,photoBackground,twins,asset,money,sampleProfile,categories,editorialImage,useCatalog,refreshCatalog} from './data';
 import type {Mode,Profile} from './data';
 import './style.css';
 import './luxury.css';
 import {brand} from './brand';
 import CampaignHero from './CampaignHero';
 import './online.css';
-import PersonalViews,{cachedPersonalImage} from './PersonalViews';
+import PersonalViews from './PersonalViews';
 import ConnectedAccount from './ConnectedAccount';
 import {useConnectedProfile} from './connection';
 import './connected.css';
@@ -30,7 +31,7 @@ import Guide from './Guide';
 const spreeLogo='/spreeai-logo.svg';
 import {wardrobe} from './wardrobe';
 
-type Panel='menu'|'sizes'|'live'|'journey'|'checkout'|'developer'|'guide'|'unlock'|'twins'|'signin'|'profile'|'why'|'compare'|'bag'|'stylist'|'saved'|'colors'|'recommendations'|null;
+type Panel='account'|'menu'|'sizes'|'live'|'journey'|'checkout'|'developer'|'guide'|'unlock'|'twins'|'signin'|'profile'|'why'|'compare'|'bag'|'stylist'|'saved'|'colors'|'recommendations'|null;
 function read<T,>(key:string,fallback:T):T {try{return JSON.parse(localStorage.getItem(key)||'null')??fallback}catch{return fallback}}
 export default function App(){
  const nav=useNavigate(),location=useLocation();
@@ -45,6 +46,7 @@ export default function App(){
  const [signedIn,setSignedIn]=useState(()=>{try{return sessionStorage.getItem('ao-review-account')==='sample'}catch{return false}});
  const [person,setPerson]=useState(()=>read('ao-person',1));
  const [profile,setProfile]=useState<Profile>(sampleProfile);
+ const [accountStart,setAccountStart]=useState(false);
  const [panel,setPanel]=useState<Panel>(null);
  const [step,setStep]=useState(0);
  const [initialMedia,setInitialMedia]=useState('');
@@ -62,6 +64,7 @@ export default function App(){
  const size=manualSize||fit.recommended||'';
  useEffect(()=>setSize(''),[connected.version]);
  const account=routePath==='/account';
+ useEffect(()=>{if(account)setPanel('account');else setPanel(current=>current==='account'?null:current)},[location.pathname]);
  const home=routePath==='/';
  const active=!!connected.identity;
  const isJourneySample=mode==='personal'&&profile.name==='Alex'&&profile.photo==='sample';
@@ -74,8 +77,8 @@ export default function App(){
  useEffect(()=>{try{sessionStorage.setItem('ao-review-mode',profile.photo==='sample'?mode:'out');sessionStorage.setItem('ao-review-account',signedIn&&profile.photo==='sample'?'sample':'');localStorage.setItem('ao-person',JSON.stringify(person))}catch{}},[mode,person,generationKey,profile.photo,signedIn]);
  useEffect(()=>{window.scrollTo(0,0)},[location.pathname]);
  useEffect(()=>{if(!toast)return;const timer=setTimeout(()=>setToast(''),3500);return()=>clearTimeout(timer)},[toast]);
- function open(value:Panel){if(['profile','signin','twins','unlock'].includes(value||'')){setPanel(null);nav('/account');return}setError('');if(value==='profile'){setPhoto(profile.photo);setMeasure({height:profile.height,weight:profile.weight});setUnit('metric')}setPanel(value)}
- function close(){setPanel(null);setPendingJourneyPiece('')}
+ function open(value:Panel){if(['profile','signin','twins','unlock'].includes(value||'')){setAccountStart(false);setPanel('account');return}setError('');if(value==='profile'){setPhoto(profile.photo);setMeasure({height:profile.height,weight:profile.weight});setUnit('metric')}setPanel(value)}
+ function close(){setAccountStart(false);if(account)nav('/collection',{replace:true});setPanel(null);setPendingJourneyPiece('')}
  function switchMode(next:Mode){setMode(next);if(next==='out')setSignedIn(false);if(next==='personal')setSignedIn(true);setInitialMedia('');if(next==='personal'){setProfile(sampleProfile);setPerson(1)}if(next==='twin')setPerson(chosenTwin);setToast(next==='out'?'Signed-out experience':next==='twin'?'AI Twin experience':'Demo account loaded. Live try-on is available on every garment.')}
  function toggleCompare(id:string){setCompare(current=>current.includes(id)?current.filter(x=>x!==id):[...current,id].slice(-3))}
  function compareOpen(){if(compare.length<2)setCompare([...(compare.length?compare:[product?.id||products[0].id]),products.find(p=>p.id!==(compare[0]||product?.id||products[0].id))!.id]);open('compare')}
@@ -85,29 +88,30 @@ export default function App(){
 
  const recommendationRail=(_title:string)=><section className="recommendation-section"><div className="section-head"><div><p className="eyebrow">SELECTED BY THE SPREEAI CREATIVE STUDIO</p><h2>Continue discovering.</h2></div><button className="text-link" onClick={()=>open('stylist')}>Meet your stylist ↗</button></div><p>Discover more from the live SPREEAI collection.</p><FeatureNote panel="recommendations" inline/><div className="recommendation-rail">{products.filter(p=>p.id!==product?.id).slice(0,5).map(p=><article key={p.id}><Link to={`/product/${p.id}`}><img loading="lazy" src={editorialImage(p,person,active)} alt={p.name}/><span className="rail-tag">LIVE COLLECTION</span><h3>{p.name}</h3></Link><p>{p.priceLabel||money(p.price)}</p><button className="text-link" onClick={()=>toggleCompare(p.id)}>{compare.includes(p.id)?'✓ In comparison':'+ Compare'}</button></article>)}</div></section>;
  return <>
-  <Welcome onAccount={()=>nav('/account')}/>
+  <GlobalLoading/>
+  <Welcome onAccount={()=>open('account')}/>
   <a className="skip" href="#content">Skip to content</a>
   <div className="announcement"><span>YOUR PERSPECTIVE. ALWAYS ON.</span><a href="https://iamjohnimah.github.io/spreeai-always-on-demo/experience-selection/">Explore experiences ↗</a></div>
   <header className={home?'store-header home-header':'store-header'}>
-   <div className="header-side"/>
+   <div className="header-side"><button className="signup-cta" onClick={()=>{setAccountStart(true);open('account')}}>Sign up</button></div>
    <Link to="/" className="wordmark" aria-label="SPREEAI home"><img src={spreeLogo} alt="SPREEAI"/></Link>
-   <div className="header-side right"><button onClick={()=>open('bag')} aria-label={`Shopping bag, ${bag.length} items`}><svg viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z M9 8V5a3 3 0 0 1 6 0v3"/></svg>{bag.length>0&&<small>{bag.length}</small>}</button><button onClick={()=>nav('/account')} aria-label="My Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg>{connected.identity&&<i className="account-dot"/>}</button><button aria-label="Search collection" onClick={()=>{nav('/collection');setFilterOpen(true);setTimeout(()=>document.querySelector<HTMLInputElement>('.catalog-search input')?.focus(),50)}}><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg></button><button aria-label="Open menu" onClick={()=>open('menu')}><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>MENU</span></button></div>
+   <div className="header-side right"><button onClick={()=>open('bag')} aria-label={`Shopping bag, ${bag.length} items`}><svg viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z M9 8V5a3 3 0 0 1 6 0v3"/></svg>{bag.length>0&&<small>{bag.length}</small>}</button><button onClick={()=>open('account')} aria-label="My Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/></svg>{connected.identity&&<i className="account-dot"/>}</button><button aria-label="Search collection" onClick={()=>{nav('/collection');setFilterOpen(true);setTimeout(()=>document.querySelector<HTMLInputElement>('.catalog-search input')?.focus(),50)}}><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg></button><button aria-label="Open menu" onClick={()=>open('menu')}><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>MENU</span></button></div>
   </header>
   <main id="content">
-  {home&&<CampaignHero onSignIn={()=>nav('/account')} onShop={()=>{nav('/collection');setFilter('All')}}/>}
+  {home&&<CampaignHero onSignIn={()=>open('account')} onShop={()=>{nav('/collection');setFilter('All')}}/>}
 
-  {!product&&!account&&<>
+  {!product&&<>
 
    <section className="collection-intro"><p className="eyebrow">THE SPREEAI COLLECTION</p><h1>New in</h1><p>Real pieces. Your perspective. Try on with SPREEAI.</p></section>
    <nav className="mainnav" aria-label="Collection navigation"><button className={filter==='All'?'current':''} onClick={()=>{setFilter('All');setLimit(12)}}>NEW IN</button>{['Outerwear','Knitwear','Bottoms','Shoes','Accessories','Dresses'].map(c=><button className={filter===c?'current':''} key={c} onClick={()=>{setFilter(c);setLimit(12)}}>{c}</button>)}<button onClick={()=>open('saved')}>Saved looks</button></nav>
    <section id="collection" className="collection"><div className="collection-toolbar"><span>{products.filter(p=>(filter==='All'||filter===p.category)&&p.name.toLowerCase().includes(search.toLowerCase())).length} pieces · <button onClick={()=>setFilterOpen(!filterOpen)}>{sort==='featured'?'Recommended':sort==='price'?'Price: low to high':'Price: high to low'}</button></span><div><span className="native-status"><i/> {catalogStatus==='live'?'Live SPREEAI catalog':'SPREEAI demo collection'}</span><button aria-expanded={filterOpen} onClick={()=>setFilterOpen(!filterOpen)}>☷ &nbsp; Filter & sort</button></div></div>
    {filterOpen&&<div className="collection-filters"><label className="catalog-search"><span>Search</span><input type="search" aria-label="Search collection" placeholder="Find a piece…" value={search} onChange={e=>{setSearch(e.target.value);setLimit(12)}}/></label><div className="filters"><div>{categories.map(x=><button key={x} className={filter===x?'selected':''} onClick={()=>{setFilter(x);setLimit(12)}}>{x}</button>)}</div><label>Sort <select aria-label="Sort products" value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Recommended</option><option value="price">Price: low to high</option><option value="high">Price: high to low</option></select></label></div></div>}
-    <div className="product-grid">{products.filter(p=>(filter==='All'||filter===p.category)&&p.name.toLowerCase().includes(search.toLowerCase())).sort((a,b)=>sort==='price'?a.price-b.price:sort==='high'?b.price-a.price:0).slice(0,limit).map((p,i)=><article className="product-card" key={p.id}>
-     <Link className="product-image" to={`/product/${p.id}`}><img loading="lazy" src={cachedPersonalImage(p.garmentId,connected.version,connected.identity?.id)||p.image} alt={p.name}/><img className="hover-model" loading="lazy" src={cachedPersonalImage(p.garmentId,connected.version,connected.identity?.id)||displayImage(p,person,false)} alt={`${p.name} on the collection model`}/><span className="discover">Discover the piece ↗</span></Link>
+    <div className="product-grid">{products.filter(p=>(filter==='All'||filter===p.category)&&p.name.toLowerCase().includes(search.toLowerCase())).sort((a,b)=>sort==='price'?a.price-b.price:sort==='high'?b.price-a.price:0).slice(0,limit).map(p=><article className="product-card" key={p.id}>
+     <Link className="product-image" style={{'--photo-background':photoBackground(p.image),'--model-background':photoBackground(p.model)} as CSSProperties} to={`/product/${p.id}`}><img loading="lazy" src={p.image} alt={p.name}/><img className="hover-model" loading="lazy" src={p.model} alt={`${p.name} on the collection model`}/><span className="discover">Discover the piece ↗</span></Link>
      <div className="product-info"><div><Link to={`/product/${p.id}`}><h3>{p.name}</h3></Link><p>{p.color} · {p.category}</p></div><span>{p.priceLabel||money(p.price)}</span></div>
      <div className="card-bottom"><span>{`${p.sizes.length} sizes`}</span><button aria-pressed={compare.includes(p.id)} onClick={()=>toggleCompare(p.id)}>{compare.includes(p.id)?'✓ Added to comparison':'+ Compare'}</button></div>
 
-     {i===0&&<div className="card-note">{badge}<span>{active?'A familiar face. A fresh perspective.':'Personal style starts with your perspective.'}</span></div>}
+
     </article>)}</div><div className="catalog-more"><p>{products.filter(p=>(filter==='All'||p.category===filter)&&p.name.toLowerCase().includes(search.toLowerCase())).length} matching pieces</p>{limit<products.filter(p=>(filter==='All'||p.category===filter)&&p.name.toLowerCase().includes(search.toLowerCase())).length&&<button className="secondary" onClick={()=>setLimit(limit+12)}>Discover more pieces</button>}</div>
    </section>
    {recommendationRail(mode==='personal'?'Recommended for you.':mode==='twin'?`The brand’s edit. Seen on ${who}.`:'The creative studio’s edit.')}
@@ -115,20 +119,20 @@ export default function App(){
   {product&&<>
    <div className="breadcrumb"><Link to="/collection">The collection</Link><span>/</span><span>{product.category}</span></div>
    <section className="pdp"><Gallery onSize={s=>{setSize(s);setToast(`Size ${s} selected`)}} key={`${product.id}-${person}-${mode}-${mediaOrder}`} product={product} person={person} active={active} who={who} pending={personalPending} initialId={initialMedia} personalFirst={active} onUnlock={i=>{setInitialMedia(i);open('unlock')}}/>
-   <div className="product-details"><div className="product-description"><p className="eyebrow">THE NEW EDIT</p><h1>{product.name}</h1><p className="price">{product.priceLabel||money(product.price)}</p><p className="color">{product.color}</p><button className="size-drawer-trigger" onClick={()=>open('sizes')}><span>{size?'Size: '+size:'Size'}</span><span>＋</span></button><FitSummary product={product} size={size}/><h2 className="detail-label">PRODUCT DESCRIPTION</h2><p className="description">{product.description}</p><details><summary>Product details <span>⌄</span></summary><p>{product.details}</p><p>{product.material}</p></details><details><summary>Delivery & returns <span>⌄</span></summary><p>This is an interactive demo. Delivery, availability and returns would be provided by the retailer.</p></details></div>
+   <div className="product-details"><div className="product-description"><p className="eyebrow">THE NEW EDIT</p><h1>{product.name}</h1><p className="price">{product.priceLabel||money(product.price)}</p><p className="color">{product.color}</p><button className="size-drawer-trigger" onClick={()=>open('sizes')}><span>{size?'Size: '+size:'Size'}</span><span>＋</span></button><FitSummary product={product} size={size}/><h2 className="detail-label">PRODUCT DESCRIPTION</h2><p className="description">{product.description.split(/(?<=[.!?])\s|\n/)[0]}</p><details><summary>Read more <span>＋</span></summary><p className="full-description">{product.description}</p></details><details><summary>Product details <span>⌄</span></summary><p>{product.details}</p><dl className="product-facts"><dt>Color</dt><dd>{product.color}</dd><dt>Available sizes</dt><dd>{product.sizes.join(' · ')}</dd><dt>Collection</dt><dd>{product.category}</dd><dt>Product reference</dt><dd>{product.garmentId}</dd></dl><p>{product.material}</p>{product.retailerUrl&&<a href={product.retailerUrl} target="_blank" rel="noreferrer" className="text-link">Full retailer specifications and dimensions</a>}</details><details><summary>Our commitment <span>＋</span></summary><p>Thoughtfully chosen pieces. Clear product information. A more personal way to discover your style, with previews and fit guidance that help you explore with confidence.</p><p className="fine">Illustrative retailer commitment for this demo. Materials, sourcing certifications and service policies are confirmed by each retailer.</p></details><details><summary>Delivery & returns <span>⌄</span></summary><p>This is an interactive demo. Delivery, availability and returns would be provided by the retailer.</p></details></div>
    <div className="product-purchase"><p className="purchase-hint">{size?`Selected size: ${size}`:'Select your size to make this piece yours.'}</p><button className="primary full" onClick={()=>{if(!size){open('sizes');return}setBag([...bag,{id:product.id,size}]);setToast('Added to your local shopping bag')}}>{size?'Add to bag':'Select size'}</button>{error&&<p role="alert" className="error">{error}</p>}
    <div className="native-services">{!active&&<button onClick={()=>open('unlock')}>◈ <span>See this garment on you</span><span>↗</span></button>}<button onClick={()=>{setCompare([product.id,products.find(p=>p.id!==product.id&&p.category===product.category)?.id||products.find(p=>p.id!==product.id)!.id]);open('compare')}}>◫ <span>Compare pieces</span><span>↗</span></button><button onClick={()=>document.getElementById('product-outfit-builder')?.scrollIntoView({behavior:'smooth'})}>＋ <span>Complete the look</span><span>↗</span></button><button onClick={()=>open('stylist')}>✧ <span>Ask your stylist</span><span>↗</span></button>{product.id==='knit-polo'&&<button onClick={()=>open(active?'colors':'unlock')}>◯ <span>Explore colors</span><span>↗</span></button>}</div><p className="fine purchase-disclosure">Interactive demonstration · No orders or payments.</p></div>
    </div></section><section id="product-outfit-builder" className="product-outfit-section" aria-label={`Outfit builder for ${product.name}`}><CompleteLook key={product.id} product={product} onBag={items=>{setBag([...bag,...items]);setToast('Your outfit was added to your bag')}}/></section>{recommendationRail('Continue your story.')}
   </>}
-  {account&&<ConnectedAccount onSaved={()=>open('saved')} onEdit={()=>open('journey')}/>}
   </main>
   <BrandFooter/>
   {compare.length>0&&!panel&&<div className="compare-tray"><span>Your comparison · {compare.length} of 3</span><button onClick={compareOpen}>Compare pieces ↗</button><button aria-label="Clear comparison" onClick={()=>setCompare([])}>×</button></div>}
   {toast&&<div className="toast" role="status">✓ {toast}</div>}
-  <Dialog.Root open={!!panel} onOpenChange={v=>{if(!v)close()}}><Dialog.Portal><Dialog.Overlay className="overlay"/><Dialog.Content className={`modal ${['profile','menu'].includes(panel||'')?'drawer':''} ${['sizes','why','live','journey','twins','compare','stylist','saved','colors'].includes(panel||'')?'wide':''} ${panel==='guide'?'guide-modal':''} ${panel==='checkout'?'checkout-modal':''}`} aria-describedby="modal-description"><Dialog.Close className="close" aria-label="Close dialog">×</Dialog.Close>
-   <Dialog.Title className="sr-only">{panel==='menu'?'Collection menu':panel==='sizes'?'Select a size':panel==='live'?'Connected try-on':panel==='journey'?'Your connected edit':panel==='checkout'?'Your Always On checkout moment':panel==='developer'?'Developer sandbox':panel==='guide'?'Your Always On guide':panel==='unlock'?'Unlock your perspective':panel==='twins'?'Choose your AI Twin':panel==='profile'?'Your personal profile':panel==='signin'?'Sign in to SPREEAI':panel==='why'?'Your size explained':panel==='bag'?'Your shopping bag':panel==='stylist'?'Your AI stylist':panel==='saved'?'Your saved looks':panel==='colors'?'Compare colors':'Compare your edit'}</Dialog.Title><Dialog.Description id="modal-description" className="sr-only">{panel==='guide'?'A guided introduction to the local Always On experience.':'Explore the local SPREEAI partner demo.'}</Dialog.Description>
-   {!['journey','stylist','saved','menu','sizes','live'].includes(panel||'')&&<FeatureNote key={`tutorial-${panel}`} panel={panel}/>}
-   {panel==='menu'&&<div className="modal-body menu-body"><p className="eyebrow">{brand} / COLLECTION</p><h2>Explore.</h2>{categories.map(c=><button key={c} onClick={()=>{setFilter(c);setLimit(12);close();nav('/collection')}}>{c==='All'?'New In':c}<span>↗</span></button>)}<hr/><button onClick={()=>{close();nav('/account')}}>My Account ↗</button><button onClick={()=>open('journey')}>My edit & store appointment ↗</button><button onClick={()=>open('live')}>Connected SPREEAI try-on ↗</button><a href="https://iamjohnimah.github.io/spreeai-always-on-demo/experience-selection/">Choose your story ↗</a></div>}
+  <Dialog.Root open={!!panel} onOpenChange={v=>{if(!v)close()}}><Dialog.Portal><Dialog.Overlay className="overlay"/><Dialog.Content className={`modal ${['profile','menu'].includes(panel||'')?'drawer':''} ${['account','sizes','why','live','journey','twins','compare','stylist','saved','colors'].includes(panel||'')?'wide':''} ${panel==='account'?'account-modal':''} ${panel==='guide'?'guide-modal':''} ${panel==='checkout'?'checkout-modal':''}`} aria-describedby="modal-description"><Dialog.Close className="close" aria-label="Close dialog">×</Dialog.Close>
+   <Dialog.Title className="sr-only">{panel==='account'?'My Account':panel==='menu'?'Collection menu':panel==='sizes'?'Select a size':panel==='live'?'Connected try-on':panel==='journey'?'Your connected edit':panel==='checkout'?'Your Always On checkout moment':panel==='developer'?'Developer sandbox':panel==='guide'?'Your Always On guide':panel==='unlock'?'Unlock your perspective':panel==='twins'?'Choose your AI Twin':panel==='profile'?'Your personal profile':panel==='signin'?'Sign in to SPREEAI':panel==='why'?'Your size explained':panel==='bag'?'Your shopping bag':panel==='stylist'?'Your AI stylist':panel==='saved'?'Your saved looks':panel==='colors'?'Compare colors':'Compare your edit'}</Dialog.Title><Dialog.Description id="modal-description" className="sr-only">{panel==='guide'?'A guided introduction to the local Always On experience.':'Explore the local SPREEAI partner demo.'}</Dialog.Description>
+   {!['account','journey','stylist','saved','menu','sizes','live'].includes(panel||'')&&<FeatureNote key={`tutorial-${panel}`} panel={panel}/>}
+   {panel==='menu'&&<div className="modal-body menu-body"><p className="eyebrow">{brand} / COLLECTION</p><h2>Explore.</h2>{categories.map(c=><button key={c} onClick={()=>{setFilter(c);setLimit(12);close();nav('/collection')}}>{c==='All'?'New In':c}</button>)}<hr/><button onClick={()=>{setAccountStart(false);open('account')}}>My Account</button><button onClick={()=>open('journey')}>My edit & store appointment</button><button onClick={()=>open('live')}>Connected SPREEAI try-on</button><a href="https://iamjohnimah.github.io/spreeai-always-on-demo/experience-selection/">Choose your experience</a></div>}
+   {panel==='account'&&<ConnectedAccount startWithSignup={accountStart} onDone={close} onSaved={()=>open('saved')} onEdit={()=>open('journey')}/>}
    {panel==='sizes'&&product&&<FitSelector product={product} size={size} onSize={setSize}/>}
    {panel==='live'&&<PersonalViews product={product||products[0]}/>}
    {panel==='journey'&&<Journey isSample={isJourneySample} onStart={startJourney} onClose={close}/>}

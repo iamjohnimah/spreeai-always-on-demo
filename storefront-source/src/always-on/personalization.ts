@@ -1,3 +1,4 @@
+import {beginLoading} from './loading';
 import {useEffect,useSyncExternalStore} from 'react';
 import {currentProfile,useConnectedProfile,render,sizing,fitMap,hasFitConnection,productionRender,productionSizing} from './connection';
 import type {Product} from './data';
@@ -9,7 +10,7 @@ const notify=()=>listeners.forEach(f=>f());
 export const profileScope=()=>{const p=currentProfile();return p.identity?p.version+':'+p.identity.id:''};
 export const renderKey=(ids:string[],size='',base='')=>profileScope()+':image:'+ids.join('|')+':'+size+':'+base;
 export const cachedImage=(id:string)=>cache.get(renderKey([id]))?.url;
-function start(key:string,load:()=>Promise<Partial<Result>>,scope:string){if(!key||cache.has(key)||jobs.has(key))return;cache.set(key,{status:'loading'});notify();const promise=load().then(value=>{if(scope===profileScope())cache.set(key,{...value,status:'ready'})}).catch(e=>{if(scope===profileScope())cache.set(key,{status:'error',error:e instanceof Error?e.message:'Temporarily unavailable.'})}).finally(()=>{jobs.delete(key);notify()});jobs.set(key,promise)}
+function start(key:string,load:()=>Promise<Partial<Result>>,scope:string){if(!key||cache.has(key)||jobs.has(key))return;cache.set(key,{status:'loading'});notify();const finishLoading=beginLoading();const promise=load().then(value=>{if(scope===profileScope())cache.set(key,{...value,status:'ready'})}).catch(e=>{if(scope===profileScope())cache.set(key,{status:'error',error:e instanceof Error?e.message:'Temporarily unavailable.'})}).finally(()=>{finishLoading();jobs.delete(key);notify()});jobs.set(key,promise)}
 function useResult(key:string){return useSyncExternalStore(f=>{listeners.add(f);return()=>{listeners.delete(f)}},()=>key?cache.get(key)||empty:empty)}
 export function usePersonalImage(products:Product[],size='',base=''){
  const profile=useConnectedProfile(),identity=profile.identity,scope=profileScope(),ids=products.map(p=>p.garmentId);const usable=identity&&ids.length>0;const key=usable?renderKey(ids,size,base):'';const state=useResult(key);
