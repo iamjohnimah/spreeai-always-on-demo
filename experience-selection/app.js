@@ -1,5 +1,7 @@
 const cards=[...document.querySelectorAll('.experience')];
 const visible=new Set();
+// Compensate for the restrained generated motion; keep VIC at its original pace.
+const playbackRates={online:1.25,'in-store':1.3,vic:1};
 // Films loop without user-facing controls; save work only when not on screen.
 function updatePlayback(){
   cards.forEach(card=>{
@@ -13,6 +15,9 @@ const observer=new IntersectionObserver(entries=>{
   updatePlayback();
 },{threshold:.05});
 cards.forEach((card,index)=>{
+  const video=card.querySelector('video');
+  video.defaultPlaybackRate=playbackRates[card.dataset.experience]??1;
+  video.playbackRate=video.defaultPlaybackRate;
   observer.observe(card);
   card.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('spreeai:experience-selected',{detail:{experience:card.dataset.experience}})));
   card.addEventListener('keydown',event=>{
