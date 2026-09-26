@@ -1,24 +1,27 @@
-# SPREEAI online storefront preview
+# Connected Always On storefront
 
-The Online selector now opens `/online/`. The page uses the Gucci collection/product layout reference with SPREEAI branding, Afacad typography and a new Freja campaign film.
+Source: `storefront-source/src/always-on/`. Build with `node scripts/build-online.mjs`.
 
-## Live product connection
+The hero has no My SPREEAI overlay card. Menu and the account icon open the native `/account` profile flow. Shoppers can select a live twin or upload their own photo, save height/weight, or use the development email sign-in, signup/confirmation and reset endpoints. Sessions are scoped to the tab and refresh through one coordinator. Signing out clears the selected identity; in-flight responses from the prior session are rejected.
 
-- Uses the same public guest flow and production catalog as `https://spreeai.com/demo`, whose catalogue is embedded from `https://demo-store.spreeai.com/`.
-- On load, calls `https://api.spreeai.com/v1/user/guest` with partner `demo-site`, then `/v3/protea/garments`. The short-lived guest token is used in memory only; it is not saved or committed.
-- A field-allowlisted snapshot of 79 garments provides an immediate fallback. No creator metadata is included. Source catalog snapshot: 2026-09-26.
-- Original names, displayed price/currency, garment IDs, size lists and image URLs are retained. 227 official images are optimized as WebP; URL-to-cache mapping only applies to an exact source URL. New image URLs use the live source automatically.
-- Product gallery and size controls launch `https://vton.spreeai.com` with the selected garment ID, partner and the public production client configuration observed on the official demo. No fixed unrelated test garment.
-- Real try-on verified in the embedded frame: Knit Maxi Dress, Freja preset, generated result and recommended size S.
+The catalog loads the 28 demo-site-owned garments from `api.dev.spreeai.com/v3/protea/garments`. The bundled fallback includes only public product fields. It does not mix production garment IDs with development avatars. The development catalog currently does not contain the former production Knit Maxi Dress.
 
-## Boundaries
+The product gallery presents product/model photography, then personal front/back/video/fit slots, then detail photos. Guests see gray profile prompts. Personal front views generate on opening the slot. Generation uses the selected photo/twin ID and actual garment IDs. Views are reusable while browsing the page session. Turn video uses the real front and back renders; sized views send both target and recommended base size. Outfit rendering sends the selected real garment set. No generated placeholder is shown as a live result.
 
-The embedded SPREEAI service performs real try-on and sizing. The surrounding account, bag, comparison, styling and saved-look flows remain an interactive retailer preview. Local account setup does not authenticate a production SPREEAI account or generate personal images. Personal results remain in the production frame; account-wide result handoff to native collection tiles still requires an approved result/account API. Checkout, inventory, POS and messaging are not connected. No personal photo was uploaded during validation; only the service's Freja preset was used.
+## Connections
 
-## Rebuild
+- Guest and refresh: `/v1/user/guest`, `/v1/auth/refresh`
+- Email account: `/v1/auth/login`, `/v2/user`, `/v1/user/confirmsignup`, `/v1/auth/forgotpassword`
+- Twins: `/v1/avatars`
+- Photos: `/v2/store-experience/user-images`
+- Profile measurements: `PUT /v2/user`
+- Front/outfit render: `/v3/store-experience/tryon`
+- Back/size render: `/v3.1/store-experience/tryon`
+- Render status: `/v1/user-assets/tryon/:id`
+- Turn video: `/v3.1/store-experience/tryon/turn` and status by turn ID
+- Size recommendation: `/v2/store-experience/sizing`, `/v1/user-assets/sizing/:id`
+- Detailed fit map: the development store's existing authenticated `/api/size-recommendation/garment/:id/fit` proxy
 
-Install locked dependencies in `storefront-source`, then run `node scripts/build-online.mjs` from the repository root. It updates only `/online/`. Run `node --test tests/online.test.mjs tests/journey.test.mjs` for catalog mapping, bridge isolation and shared-state validation.
+GitHub Pages supports the direct development API calls. Detailed fit maps require the same-origin development proxy. `node scripts/serve-online.mjs` runs a loopback preview at port 8769 with an exact-path, authenticated pass-through. `scripts/package-connected-preview.mjs DESTINATION` packages this screen for a separate development-store path without replacing that store's homepage. The development package must be host-gated against stage/production.
 
-## Film
-
-Seedance 2.5 reference generation: `b8738006-19f0-40d0-8e76-e9d44d3b0ca6`; logo cleanup: `552ab69c-2f70-4f28-ab7e-35397bd26d93`. Approved Freja identity. 15 seconds, 1920×1080, muted looping hero with a responsive portrait crop. Laptop lid is blank. The accompanying Always On card is an illustrative product story, not a returned inference result.
+The map's own recommendation is used with its fit statements so it cannot conflict with an older sizing model's answer. Missing charts or generation failures are shown as unavailable, never replaced by invented measurements. Stock, payments and the conversational stylist remain previews. Personal photos/passwords are not part of build artifacts or analytics. Authentication and upload forms are wired but not tested using a real person's credentials/photo.
