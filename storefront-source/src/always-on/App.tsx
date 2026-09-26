@@ -1,3 +1,4 @@
+import BrandFooter from './BrandFooter';
 import {configure,readJourney,togglePiece} from '../../../journey/store.js';
 import Journey, {useJourney} from './Journey';
 import CheckoutCelebration from './CheckoutCelebration';
@@ -121,7 +122,7 @@ export default function App(){
   </>}
   {account&&<ConnectedAccount onSaved={()=>open('saved')} onEdit={()=>open('journey')}/>}
   </main>
-  <footer className="shopping-footer"><Link className="footer-wordmark" to="/">SPREEAI</Link><a href="https://iamjohnimah.github.io/spreeai-always-on-demo/experience-selection/">Explore all experiences ↗</a><small>Always On by SPREEAI · Demo experience</small></footer>
+  <BrandFooter/>
   {compare.length>0&&!panel&&<div className="compare-tray"><span>Your comparison · {compare.length} of 3</span><button onClick={compareOpen}>Compare pieces ↗</button><button aria-label="Clear comparison" onClick={()=>setCompare([])}>×</button></div>}
   {toast&&<div className="toast" role="status">✓ {toast}</div>}
   <Dialog.Root open={!!panel} onOpenChange={v=>{if(!v)close()}}><Dialog.Portal><Dialog.Overlay className="overlay"/><Dialog.Content className={`modal ${['profile','menu'].includes(panel||'')?'drawer':''} ${['sizes','why','live','journey','twins','compare','stylist','saved','colors'].includes(panel||'')?'wide':''} ${panel==='guide'?'guide-modal':''} ${panel==='checkout'?'checkout-modal':''}`} aria-describedby="modal-description"><Dialog.Close className="close" aria-label="Close dialog">×</Dialog.Close>
